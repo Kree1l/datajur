@@ -1,0 +1,2711 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>На пределе вовлеченности: где заканчивается интерес зрителя Netflix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&family=Advent+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+  
+  <style>
+    :root {
+      --bg: #182636;
+      --bg-soft: #223348;
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.72);
+      --dim: rgba(255,255,255,.48);
+      --accent: #E5171D;
+      --accent-soft: rgba(229, 23, 29, .16);
+      --glass: rgba(255,255,255,.08);
+      --glass-strong: rgba(255,255,255,.12);
+      --border: rgba(255,255,255,.16);
+      --shadow: 0 24px 80px rgba(0,0,0,.34);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1600px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Advent Pro", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(229,23,29,.14), transparent 28%),
+        radial-gradient(circle at 100% 10%, rgba(255,255,255,.05), transparent 30%),
+        linear-gradient(180deg, #122030 0%, #182636 40%, #182636 100%);
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; display: block; }
+    a {
+      color: var(--text);
+      text-decoration-color: rgba(229,23,29,.8);
+      text-underline-offset: 3px;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(24,38,54,.72);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .nav-meta {
+      color: var(--dim);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(7,12,20,.18) 0%, rgba(24,38,54,.38) 45%, rgba(24,38,54,.96) 100%),
+        url('images/hero.jpg') center/cover no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 85%;
+      margin: 0 auto;
+      padding: 120px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .hero-card {
+      padding: 40px;
+      border-radius: var(--radius-xl);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(229,23,29,.28);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.08;
+    }
+
+    h1 {
+      font-family: "Advent Pro", sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: clamp(24px, 3vw, 32px);
+      color: rgba(255,255,255,.9);
+      margin-bottom: 20px;
+    }
+
+    .authors,
+    .date {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-chip {
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+    }
+
+    .source-link {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 3;
+      font-size: 13px;
+      color: rgba(255,255,255,.88);
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(14px);
+    }
+
+    .section {
+      padding: 28px 16px;
+    }
+
+    .section-top {
+      padding-top: 54px;
+    }
+
+    .divider {
+      margin: 36px auto;
+      width: min(calc(100% - 32px), var(--max));
+      padding: 22px 24px;
+      border-radius: 28px;
+      border: 1px solid rgba(229,23,29,.36);
+      background:
+        linear-gradient(90deg, rgba(229,23,29,.22), rgba(255,255,255,.05)),
+        rgba(255,255,255,.05);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.04) inset, 0 18px 50px rgba(0,0,0,.24);
+      backdrop-filter: blur(18px);
+    }
+
+    .divider strong {
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .divider p {
+      margin: 0;
+      color: #fff;
+      font-size: 32px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 16px;
+      padding: 0 16px;
+    }
+
+    .wide-cards .card {
+      padding: 40px;
+    }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      border-radius: var(--radius-xl);
+      padding: 28px;
+    }
+
+    .kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--accent);
+      font-size: 32px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-family: "Advent Pro", sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-family: "Advent Pro", sans-serif;
+      font-size: clamp(22px, 3vw, 34px);
+      margin-bottom: 14px;
+    }
+
+    p { margin: 0 0 16px; font-size: 32px;}
+    p:last-child { margin-bottom: 0; }
+
+    .muted { color: var(--muted); }
+
+    .full-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .full-layout {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 26px;
+      align-items: stretch;
+      padding: 0 16px;
+    }
+
+    .visual-stack {
+      display: grid;
+      gap: 18px;
+      min-height: 680px;
+    }
+
+    .placeholder {
+      position: relative;
+      border-radius: 28px;
+      overflow: visible;
+      min-height: 220px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.04)),
+        rgba(255,255,255,.04);
+      border: 1px dashed rgba(255,255,255,.22);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .placeholder.large { min-height: 340px; }
+    .placeholder.tall { min-height: 460px; padding: 24px; }
+
+    .placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left, rgba(229,23,29,.18), transparent 28%);
+    pointer-events: none;
+    }
+
+    .placeholder-label {
+      position: relative;
+      z-index: 1;
+      font-size: 14px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: rgba(255,255,255,.92);
+    }
+
+    .placeholder-sub {
+      display: block;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: normal;
+      text-transform: none;
+      font-weight: 500;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullet-list li {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 25px;
+    }
+
+    .quote-block {
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(229,23,29,.14), rgba(255,255,255,.04));
+      border: 1px solid rgba(229,23,29,.25);
+      font-size: 18px;
+      color: rgba(255,255,255,.94);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .two-visuals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .footer {
+      padding: 36px 16px 64px;
+    }
+
+    .footer-card {
+      padding: 26px;
+      border-radius: 28px;
+    }
+
+    .anchor-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .anchor-nav a {
+      display: inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .chart-accent {
+    color: var(--accent);
+    }
+    .chart-wrapper {
+      position: relative;
+      height: 400px;
+    }
+
+    .chart-y-label {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .chart-x-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .placeholder.tall canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .chart-header {
+        margin-bottom: 20px;
+    }
+
+    .chart-title {
+        font-size: 36px; /* 🔥 увеличили */
+        margin: 0 0 10px 0;
+        color: var(--text);
+        font-family: "Advent Pro", sans-serif;
+        font-weight: 600;
+        text-align: left; /* 👈 выравнивание */
+    }
+
+    .chart-subtitle {
+        font-size: 20px; /* увеличили */
+        margin: 0;
+        color: var(--muted);
+        text-align: left;
+    }
+
+    .chart-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--muted);
+    width: 100%;
+    }
+    .votes-card {
+  padding: 32px;
+}
+
+  .votes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .vote-item {
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .vote-label {
+    font-size: 14px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .vote-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--accent); /* 🔥 красный акцент */
+    margin-bottom: 10px;
+  }
+
+  .vote-desc {
+    font-size: 18px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.4;
+  }
+
+    .chart-source {
+    text-align: left;
+    flex: 1;
+    }
+
+    .chart-authors {
+    text-align: right;
+    flex: 1;
+    margin-left: auto;
+    }
+
+    .season-block {
+      margin-top: 28px;
+    }
+    .seasons-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 👈 не растягиваем */
+      justify-content: center;  
+      gap: 12px;
+      width: 100%;
+    }
+    .seasons-umb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 👈 не растягиваем */
+      justify-content: center;  
+      gap: 12px;
+      width: 100%;
+    }
+
+    .seasons-grid .vote-item {
+      aspect-ratio: auto;/* 👈 квадрат */
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      text-align: left;
+      padding: 12px;
+      width: 200px;
+      width: 100%;          /* 👈 размер квадрата */
+      max-width: 100%;
+    }
+
+    .seasons-grid .vote-label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      text-align: left;
+    }
+
+    .seasons-grid .vote-value {
+      font-size: 36px;
+    }
+
+    .rate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 👈 не растягиваем */
+      justify-content: center;  
+      gap: 12px;
+      width: 100%;
+    }
+    .rate-grid .vote-item {
+      aspect-ratio: auto;/* 👈 квадрат */
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      text-align: left;
+      padding: 12px;
+      width: 200px;
+      width: 100%;          /* 👈 размер квадрата */
+      max-width: 100%;
+    }
+
+    .rate-grid .vote-label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      text-align: left;
+    }
+
+    .rate-grid .vote-value {
+      font-size: 36px;
+    }
+    .season-title {
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .season-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .season-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      font-size: 18px;
+    }
+
+    .season-item strong {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .season-highlight {
+      background: rgba(229,23,29,.12);
+      border: 1px solid rgba(229,23,29,.3);
+    }
+
+    .season-highlight strong {
+      color: var(--accent);
+    }
+
+    .image-caption-block {
+      padding: 18px 20px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+
+    .image-caption-block p {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .image-caption-block p:last-child {
+      margin-bottom: 0;
+      font-size: 18px;
+    }
+    .quote-profile-block {
+  padding: 28px;
+  border-radius: 28px;
+}
+
+.quote-text {
+  font-size: 34px;
+  line-height: 1.3;
+  color: rgba(255,255,255,0.96);
+  margin-bottom: 28px;
+  max-width: 1200px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.quote-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.28);
+}
+
+.quote-profile-content {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.quote-profile-photo {
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.quote-profile-photo img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1 / 1.2;
+  object-fit: cover;
+}
+
+.quote-profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.quote-meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quote-meta-label {
+  display: inline-block;
+  width: fit-content;
+  font-size: 24px;
+  font-style: italic;
+  text-decoration: underline;
+  color: rgba(255,255,255,0.92);
+}
+
+.quote-meta-text {
+  font-size: 30px;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.94);
+  max-width: 900px;
+}
+
+.quote-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quote-links a {
+  width: fit-content;
+  font-size: 26px;
+  color: #7fb2ff;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .quote-profile-content {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-profile-photo {
+    max-width: 280px;
+  }
+
+  .quote-text {
+    font-size: 26px;
+  }
+
+  .quote-meta-text {
+    font-size: 22px;
+  }
+
+  .quote-links a {
+    font-size: 20px;
+  }
+}
+    @media (max-width: 768px) {
+      .seasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 1024px) {
+      .hero-inner,
+      .full-layout,
+      .grid-2,
+      .grid-3,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-stack { min-height: auto; }
+      .full-screen { min-height: auto; padding: 40px 0; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-inner { padding-top: 92px; }
+      .hero-card, .card { padding: 22px; }
+      .source-link {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        width: auto;
+        text-align: center;
+      }
+      .two-visuals { grid-template-columns: 1fr; }
+    }
+    .osd-spacer {
+    height: 1px;
+    min-height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    }
+    #osd .placeholder.tall {
+    padding: 16px 12px 20px;
+    height: 720px; /* 👈 фиксированная высота */
+    display: flex;
+    flex-direction: column;
+    }
+
+    #osd .chart-container {
+    width: 100%;
+    }
+
+    #osd .chart-footer {
+    width: 100%;
+}
+.rating-card {
+  padding: 32px;
+  text-align: center;
+}
+
+.rating-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.rating-item {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  text-align: center;
+}
+
+.rating-label {
+  font-size: 14px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.rating-value {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.rating-desc {
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.4;
+}
+.full-image-block {
+  width: min(calc(100% - 32px), var(--max));
+  margin: 40px auto 0;
+}
+
+.image-wrapper {
+  aspect-ratio: 16 / 9;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.image-caption {
+  color: rgba(255,255,255,0.9);
+}
+
+.image-source {
+  color: var(--muted);
+  text-align: right;
+}
+/* акценты */
+
+.rating-max {
+  background: rgba(229,23,29,.12);
+  border: 1px solid rgba(229,23,29,.3);
+}
+
+.rating-avg {
+  background: rgba(255,255,255,.06);
+}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия</div>
+      <div class="date">22.03.2026</div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-media"></div>
+    <a class="source-link" href="https://unsplash.com/photos/a-black-square-with-a-red-n-on-it-sOU09hnONrQ" target="_blank" rel="noopener">Источник картинки</a>
+
+    <div class="hero-inner">
+      <div class="hero-card glass">
+        
+        <h1>На пределе вовлеченности: где заканчивается интерес зрителя Netflix</h1>
+        <div class="subtitle">Влияние роста хронометража и масштабов сезонов сериалов Netflix на интерес зрителей в мире на примере сериалов «Очень странные дела» и «Академия Амбрелла» в 2016–2026 годах</div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider">
+    <p id="summary">Как влияет рост хронометража и масштаба сериалов Netflix на интерес зрителей — усиливает ли он вовлеченность или, наоборот, снижает ее? В этом исследовании на примере «Очень странных дел» и «Академии Амбрелла» анализируются рейтинги, просмотры и поисковая активность за 2016–2026 годы, чтобы понять, какие факторы действительно удерживают аудиторию — увеличение времени просмотра сериала, его маркетинговая кампания или сила авторского видения.</p>
+  </div>
+
+  <section class="section section-top" id="method">
+    <div class="container grid-2 wide-cards">
+      <article class="card glass">
+        <div class="kicker">Зачем это изучать?</div>
+        <p>В рамках данного исследования наша цель — проанализировать, каким образом изменение формата сериалов Netflix — в частности, длительность серий, общий хронометраж сезонов, количество эпизодов и расширение режиссерской команды — влияет на интерес аудитории. Под интересом понимаются такие показатели, как рейтинги, просмотры и поисковая активность. Особое внимание уделяется выявлению устойчивых закономерностей (если таковые существуют) в восприятии зрителями многосезонных проектов платформы.</p>
+        <p>Исследование исходит из гипотезы о том, что увеличение хронометража и масштабов сезона не гарантирует роста интереса аудитории. Напротив, расширение экранного времени и вовлечение большего числа режиссеров может формировать завышенные ожидания, которые не всегда оправдываются. Это способно приводить к снижению вовлеченности зрителей, что отражается в динамике рейтингов и поисковой активности после выхода сериала.</p>
+      </article>
+
+      <article class="card glass">
+        <div class="kicker">Исследования</div>
+        <p><a href="https://www.mdpi.com/2076-0760/8/1/19?utm_source=chatgpt.com">Исследование</a> Сары Э. Эриксон, Сони Даль Син и Ханны Бил в журнале «Social sciences» (2019) анализирует влияние непрерывного просмотра на вовлеченность аудитории: эксперимент показал, что просмотр нескольких эпизодов подряд усиливает эмоциональную вовлеченность и связь с персонажами, однако этот эффект не обязательно сохраняется в долгосрочной перспективе.</p>
+        <p>В работе из журнала <a href="https://link.springer.com/article/10.1007/s11129-024-09283-2?utm_source=chatgpt.com">Quantitative Marketing and Economics</a> (2024) Мина Амери и Элизабет Хонка описали, что интенсивность просмотра, включая длительность серии и количество эпизодов, влияет на вовлеченность аудитории по нелинейному принципу: максимальный эффект достигается при умеренной длительности, а чрезмерное увеличение времени просмотра может снижать интерес.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <article class="card glass">
+        <div class="kicker">Как работали с данными</div>
+        <p>В исследовании использовался комплексный анализ, направленный на выявление зависимости между характеристиками сериалов и интересом аудитории. Объектом анализа стали сериалы Очень странные дела и Академия Амбрелла, выбранные как сопоставимые по жанру, платформе (Netflix) и формату многосезонного нарратива.</p>
+        <h3>Сбор данных включал несколько источников:</h3>
+        <ul class="bullet-list">
+          <li>поисковая активность (Google Trends) для оценки динамики интереса аудитории во времени;</li>
+          <li>пользовательские оценки и количество голосов (IMDb и аналогичные платформы);</li>
+          <li>характеристики контента (длительность эпизодов, количество серий, структура сезонов, состав режиссерской команды).</li>
+        </ul>
+        <h3>На этапе подготовки данные были очищены и агрегированы:</h3>
+        <ul class="bullet-list">
+          <li>рассчитаны средние значения оценок по сезонам и сериям;</li>
+          <li>нормализованы показатели интереса (например, шкала Google Trends);</li>
+          <li>сформированы сопоставимые метрики (средний хронометраж, среднее число голосов и другие).</li>
+        </ul>
+        <h3>Для анализа использовались следующие методы и инструменты:</h3>
+        <ul class="bullet-list">
+          <li>описательная статистика (среднее, медиана, минимум/максимум) для выявления общей динамики;</li>
+          <li>корреляционный анализ (коэффициент Пирсона) для проверки связи между хронометражем и оценками;</li>
+          <li>сравнительный анализ двух кейсов для выявления устойчивых и различающихся паттернов.</li>
+        </ul>
+        <p>Такой подход позволил оценить, существует ли статистически значимая связь между масштабом сезонов и интересом аудитории, а также выявить влияние дополнительных факторов — например, финальности сезона, маркетинговых кампаний и внешнего контекста.</p>
+      </article>
+
+      <article class="card glass">
+        <div class="kicker">Контекст</div>
+        <p>В момент выхода своих последних сезонов «Очень странные дела» и «Академия Амбрелла» имели бешеную популярность, учитывая, что уже в первую неделю релиза они занимали лидирующие позиции в <a href="https://www.netflix.com/tudum/top10/tv">топ-10 Netflix</a>. Раз последние сезоны встречали с большим ажиотажем, значит предыдущие оставляли приятное послевкусие и заставляли ждать следующего сезона.</p>
+      </article>
+    </div>
+  </section>
+
+  
+
+  <section class="section full-screen" id="osd">
+    <div class="container full-layout">
+      <div class="visual-stack">
+        <div class="placeholder tall glass" style="display: flex; flex-direction: column;">
+            <div class="chart-header">
+                <h2 class="chart-title">Поисковая популярность <span class="chart-accent">Stranger Things</span> 2016–2026</h2>
+                <p class="chart-subtitle">Индекс поисковой активности в % по запросу <span class="chart-accent">Stranger Things</span>, где 100% — пиковый интерес, за период 2016–2026 гг.</p>
+            </div>
+            <div class="chart-container" style="flex: 1; position: relative;">
+                <div class="chart-y-label">Индекс поисковой активности, %</div>
+                <canvas id="osdChart"></canvas>
+                <div class="chart-x-label">Годы</div>
+            </div>
+            <div class="chart-footer">
+                <span class="chart-source">
+                Источник данных: 
+                    <a href="https://trends.google.com/trends/explore?date=2016-01-01%202026-01-13&q=Stranger%20Things" target="_blank">
+                        Google Trends
+                    </a>
+                    , 2016–2026
+                </span>
+                <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
+            </div>
+        </div>
+        <div class="osd-spacer" aria-hidden="true"></div>
+      </div>
+
+      <article class="card glass">
+        <div class="kicker">Очень странные дела</div>
+        <p>В первой половине 2016 года интерес к проекту находился на минимальной отметке — <b>всего 1 балл</b>. Это не удивительно, ведь сериал вышел 15 июля 2016 года, а анонсирован был в апреле 2015, <a href="https://variety.com/2015/tv/news/stranger-things-netflix-1201489634/" target="_blank">как сообщает Variety</a>, под своим первоначальным рабочим названием — «Монток». Большой популярности, как можно заметить, ему это не принесло. До выхода самой первой серии ОСД не был интересен зрителям и не особо рекламировался, учитывая, что изначально был рассчитан всего лишь на один сезон.</p>    
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <article class="card glass">
+        <p>Тем не менее сериал не просто выжил, он достиг пика интереса в январе 2026 года. Десятилетний путь от премьеры до максимума говорит о многом: проект не только сохранил, но и нарастил аудиторию; франшиза успешно расширилась. Важно, что максимальный уровень интереса был достигнут не сразу после релиза, а спустя годы и сезоны, что отличает ОСД от кратковременных хитов и подчеркивает его роль как культурного маркера поколения.</p>
+        <p>При этом, как видно на графике, статистика выявляет заметную асимметрию в распределении интереса за эти 10 лет: среднее значение составляет около 9,45, тогда как медиана всех значений равна всего 5. Такое расхождение указывает на цикличность внимания аудитории: редкие, но мощные всплески интереса — например, перед премьерами сезонов и во время выхода новых серий, как и происходило в 2016, 2017, 2019, 2022 и 2025 годах — чередуются с длительными периодами умеренного внимания. Когда ажиотаж от премьер заканчивается, всеобщий интерес к проекту утихает. Распределение имеет правостороннюю скошенность: небольшое число пиковых значений «перевешивает» массу низких. Эта динамика типична для контента, живущего за счёт инфоповодов — релизов, скандалов, анонсов, — но сохраняющего лояльность аудитории и в «спокойные» периоды благодаря устойчивому образу и культурной ценности.</p>
+        <p>Однако пик в 2026 году не отражает абсолютный положительный рекорд, связанный только с качеством и высокой оценкой среди фанатов, в этих данных такой статистики в принципе нет. Стоит учитывать, что на динамику могли повлиять и внешние факторы: пандемия, ускорившая рост стримингового потребления в 2020–2021 годах, или социальные тренды, например, скандалы в соцсетях в связи с личными заявлениями актеров. Так, в августе 2022 года, через месяц после выхода 3 сезона, одна из главных актрис состава ОСД Милли Бобби Браун дала скандальное интервью <a href="https://www.allure.com/story/millie-bobby-brown-cover-interview-september-2022" target="_blank">Allure</a>, в котором рассказала о домогательствах по отношению к ней со стороны ее бывшего молодого человека. Это вызвало бурную реакцию в СМИ, из-за чего, вполне вероятно, к сериалу был повышенный спрос.</p>
+      </article>
+      <div class="grid-2">
+        <div class="card glass votes-card">
+          <h3>Количество оценок сериала</h3>
+          <div class="votes-grid">
+            <div class="vote-item vote-min">
+              <div class="vote-label">Минимум</div>
+              <div class="vote-value count-up">38 273</div>
+              <div class="vote-desc">3 сезон, 5 серия<br>«Глава пятая: Армия Истязателя»</div>
+            </div>
+
+            <div class="vote-item vote-max">
+              <div class="vote-label">Максимум</div>
+              <div class="vote-value count-up">182 353</div>
+              <div class="vote-desc">5 сезон, 7 серия<br>«Глава седьмая: Мост»</div>
+            </div>
+          </div>
+        </div>
+      <article class="card glass">
+        <div class="kicker">Оценки серий: что это было?</div>
+      <p>Исходя из представленных данных, самой «оцененной» серией стала 7 серия 5 сезона — <b>182 353 голоса</b>. Это почти в пять раз больше, чем у серии с минимальным показателем. Такой результат трудно объяснить исключительно качеством конкретного эпизода, скорее, речь идет об эффекте финального события.</p>
+      <p>Пятый сезон воспринимался как <a href="https://www.kinopoisk.ru/media/news/4011509/?utm_referrer=yandex.ru">кульминация</a> десятилетней истории. За это время сериал превратился из ностальгического sci-fi проекта в глобальный культурный феномен. Финальные эпизоды подобных шоу часто становятся медиасобытием: возвращаются зрители, которые «отвалились» по ходу сезонов, усиливается обсуждение в социальных сетях, возрастает поисковая активность, СМИ публикуют разборы и теории. В результате аудитория не просто смотрит серию — она активно фиксирует свое присутствие через оценки и комментарии.</p>
+      <p>Также после выхода предпоследней серии финального сезона в интернете появился слух о вырезанных сценах. Фанаты, пытаясь привлечь внимание режиссеров и сценаристов создали <a href="https://www.change.org/p/the-unseen-footage-stranger-things-s5-vol-2?recruiter=1398273776&recruited_by_id=2b31a9d0-e371-11f0-9ea0-f164ec676ffc&utm_source=share_petition&utm_campaign=psf_combo_share_initial&utm_term=1d788e4a266045389b66bba3b357c71f&utm_medium=copylink&utm_content=cl_sharecopy_490941774_en-US%3A3">петицию</a>, а также искусственно голосовали за серию, занижая оценки.</p>
+      <p>Самой менее оцененной серией стала 5 серия 3 сезона «Глава пятая: Армия Истязателя» — <b>38 273 голосов</b>. Это середина третьего сезона — период, когда эффект новизны уже прошел, но финальное напряжение еще не достигнуто. Подобные «серединные» эпизоды часто не вызывают резонансной реакции: они развивают сюжет, но не становятся поворотными точками.</p>
+      </article>
+      </div>
+        <div class="card glass votes-card">
+          <h3>Количество голосов по сезонам</h3>
+
+          <div class="votes-grid seasons-grid">
+            <div class="vote-item">
+              <div class="vote-label">1 сезон</div>
+              <div class="vote-value count-up">46 806 человек</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">2 сезон</div>
+              <div class="vote-value count-up">43 089 человек</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">3 сезон</div>
+              <div class="vote-value count-up">41 805 человек</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">4 сезон</div>
+              <div class="vote-value count-up">50 565 человек</div>
+            </div>
+
+            <div class="vote-item vote-max">
+              <div class="vote-label">5 сезон</div>
+              <div class="vote-value count-up">107 549 человек</div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container full-layout">
+      <div class="visual-stack">
+        <div class="two-visuals">
+          <div class="placeholder glass large">
+            <div class="placeholder-label">
+              <img src="images/image1.jpg">
+            </div>
+          </div>
+          <div class="placeholder glass large">
+            <div class="placeholder-label">
+              <img src="images/image7.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="card glass image-caption-block">
+          <p>Коллаборации ОСД с Starbucks и Pandora</p>
+          <p class="muted">
+            Источник:
+            <a href="https://www.instagram.com/snackolator?igsh=NXhkYjc2MDluN3Rl" target="_blank">Инстаграм-аккаунт** Snackolator</a>   
+            и
+            <a href="https://www.instagram.com/p/DRewENmjPxJ/?igsh=cDNreHRuZ2wxcmly" target="_blank">Инстаграм-аккаунт** Pandora</a>
+          </p>
+        </div>
+
+      </div>
+
+      <article class="card glass">
+          <p>Интересно проследить динамику среднего количества голосов по сезонам. Видно постепенное снижение интереса с первого по третий сезон — типичная траектория для многосезонных проектов, когда пик новизны сменяется стабильным, но менее интенсивным вниманием. Четвертый сезон демонстрирует восстановление интереса, а пятый — резкий скачок, связанный с финалом истории, подогретым многочисленными рекламными кампаниями, <a href="https://www.newsbytesapp.com/news/entertainment/stranger-things-5-netflix-announces-world-press-tour/story">пресс-турами по странам</a> и коллаборациями с различными брендами</a>.</p>
+      </article>
+
+    </div>
+  </section>
+   <section class="section">
+    <div class="container grid-2">
+      <div class="card glass votes-card">
+          <h3>Рейтинговая оценка серий</h3>
+
+          <div class="votes-grid rate-grid">
+            <div class="vote-item">
+              <div class="vote-label">МИНИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">5,7</span>/10
+              </div>
+              <div class="text">5 сезон, 7 серия, «Глава седьмая: Мост»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">МАКСИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">9,6</span>/10
+              </div>
+              <div class="text">4 сезон, 7 серия, «Глава седьмая: Резня в Хоукинской лаборатории»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">СРЕДНЯЯ</div>
+              <div class="vote-value">
+                <span class="count-up">8,4</span>/10
+              </div>
+            </div>
+          </div>
+           <p>Итак, <b>минимальное значение (5,7)</b> получил ранее упомянутый эпизод «Глава седьмая: Мост» 5 сезона. Во-первых, такую оценку можно связать с неоправданными ожиданиями зрителей: планка, поставленная предыдущими сезонами, слишком высока, близок конец всего сериала, а события развиваются слишком медленно. Во-вторых, СМИ и фанаты <a href="https://www.forbes.com/sites/paultassi/2025/12/27/stranger-things-season-5s-rotten-tomatoes-imdb-scores-are-crashing/">критиковали</a> эпизод за чрезмерное внимание к персонажам, которые почти не появлялись в остальных частях сериала, плохую игру Милли Бобби Браун и Финна Вулфхарда, играющих Одиннадцать и Майка. В-третьих, весомую часть хронометража занимает сцена в которой Уилл Байерс (Ноа Шнапп) признается друзьям в своей гомосексуальности*. Зрители <a href="https://nordic.ign.com/stranger-things/102416/news/stranger-things-season-5-episode-7-sparks-review-bomb-battle-as-fans-combat-backlash-to-hotly-debate">обвинили</a> Netflix в «продвижении гей-повестки*» среди молодого поколения, а братьев Даффер упрекнули в том, что они поставили политику выше сюжета.</p>
+        <p><b>Максимальный рейтинг (9,6)</b> получил 7 эпизод 4 сезона «Глава седьмая: Резня в Хоукинской лаборатории». Впервые в 4 сезоне серии вышли не в один день, а были разделены на две волны: серии 1–7 и серии 8–9, соответственно 7 серия стала концовкой 1 части сезона и <a href="https://www.tvinsider.com/gallery/stranger-things-best-episodes-ranked/#9">подогрела интерес</a> к финальным частям. В эпизоде также раскрывается лицо главного злодея через масштабный плот-твист, что также могло удивить зрителей.</p>
+        <p>При этом средний рейтинг по первым четырем сезонам <b>(8,4)</b> указывает на то, что сериал в целом получил положительные отзывы от зрителей. Однако средняя оценка для 5 сезона снизилась <b>(7,9)</b>: это может указывать на то, что сериал не смог оправдать ожидания зрителей, особенно по сравнению с предыдущими сезонами.</p>
+      
+      </div> 
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid-2">
+          <div class="card glass votes-card">
+          <h3>Хронометраж</h3>
+
+          <div class="votes-grid rate-grid">
+            <div class="vote-item">
+              <div class="vote-label">МИНИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">41</span> минута
+              </div>
+              <div class="text">1 сезон, 7 серия, «Глава седьмая: Ванна»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">МАКСИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">139</span> минут
+              </div>
+              <div class="text">4 сезон, 7 серия, «Глава седьмая: Резня в Хоукинской лаборатории»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">СРЕДНЯЯ</div>
+              <div class="vote-value">
+                <span class="count-up">63</span> минуты
+              </div>
+            </div>
+            
+          </div>
+          <p>Проанализировав общий хрон сериала посезонно, мы выявили, что первый сезон имеет самый короткий средний хронометраж — ~ <b>49 минут</b>, это характерно для большинства первых сезонов сериалов, когда проект еще не разросся в масштабах и сложных сюжетных линиях. Именно в этом сезоне средняя оценка пользователей была одной из самых высоких — <b>8,7</b>, что подтверждает высокое качество контента при относительно компактных сериях.</p>
+        <p>С увеличением хронометража в последующих сезонах, особенно начиная с <b>четвертого сезона</b>, продолжительность серий выросла до ~ <b>84 минут</b>, и это значительное увеличение явно повлияло на восприятие зрителями. Несмотря на увеличение времени, <b>четвертый сезон</b> (средний рейтинг 8,678) все еще сохранял высокие оценки, что указывает на то, что увеличение хронометража не всегда приводит к снижению интереса, если контент продолжает соответствовать ожиданиям аудитории.</p>
+        <p>Однако 5 сезон со средней продолжительностью серий ~ <b>77 минут</b> и значительным падением рейтинга до <b>7,91</b> предполагает, что увеличение хронометража без должного содержания и плотного сюжета может привести к растянутому восприятию. Это также может быть результатом недостаточной работы с темпом и повествовательными линиями, что вызывало разочарование у зрителей, так как от финала всего сериала могли ожидать большего</p>
+        <p>По этим данным мы рассчитали коэффициент корреляции между длительностью серии и ее средней оценкой. Полученное значение <b>0,097</b> указывает на очень слабую положительную корреляцию, даже ее отсутствие. Если взять длину серии в 50 минут, то ее средняя оценка составляет примерно 8,3. При этом у серии в 120 минут значение также не превышает <b>8,3–8,4</b>. В рамках оценивания серий на стриминговых сервисах разница абсолютно незаметна.   </p>
+      
+      </div>
+    
+  </section>
+
+
+
+  <section class="section full-screen" id="osd-probability">
+  <div class="container">
+    <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
+      <div class="chart-header">
+        <h1 class="chart-title">Зависимость оценки серии от ее длительности</h2>
+        <p class="chart-subtitle">Расчет коэффициента корреляции Пирсона между длительностью серии <span class="chart-accent">Stranger Things </span>в минутах и ее средней оценкой</p>
+      </div>
+
+      <div class="chart-container" style="flex: 1; position: relative;">
+        <div class="chart-y-label">Средняя оценка серии</div>
+          <canvas id="osdRuntimeRatingChart"></canvas>
+        <div class="chart-x-label">Длительность, мин</div>
+      </div>
+
+      <div class="chart-footer">
+        <span class="chart-source">
+          Источник: 
+          <a href="https://github.com/Kree1l/strangethingsdataset/blob/main/TV%20ST%20rating%2Bruntime.csv" target="_blank" rel="noopener">
+            GitHub
+          </a>, 2016–2026
+        </span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="section">
+    <div class="container grid-2">
+      <article class="card glass">
+        <div class="kicker">А что до режиссеров?</div>
+        <p>Если рассматривать режиссерский фактор как потенциальный драйвер интереса аудитории, можно заметить несколько закономерностей.</p>
+        <p>Во-первых, наивысший средний рейтинг — 8,95 — у Эндрю Стэнтона, однако он снял всего 2 серии. При таком небольшом объеме данных результат нельзя считать статистически устойчивым: одна удачная серия способна существенно поднять среднее значение.</p>
+        <p>Во-вторых, наиболее показательна работа братьев Дафферов — они сняли 23 серии, и их средний рейтинг составляет 8,61. Это большой массив наблюдений, поэтому именно этот показатель можно считать наиболее репрезентативным. Он подтверждает, что авторское ядро проекта обеспечивает стабильное качество.</p>
+        <p>Интересно, что Шон Леви, снявший 9 серий, демонстрирует сопоставимый результат — 8,62, что говорит о близости режиссерского подхода к общей стилистике сериала.</p>
+        <p>Отдельно стоит отметить аномалию: серия, снятая совместно братьями Дафферами и Шоном Леви, имеет рейтинг 5,7 (та самая, ранее упомянутая 7 серия 5 сезона). Поскольку это всего одна серия, она не отражает общий уровень работы режиссеров, но показывает, что даже внутри устойчивой авторской модели возможны провалы — вероятно, связанные не столько с режиссурой, сколько с сюжетными решениями.</p>
+        <p>В контексте нашей гипотезы можно сделать важный вывод: в случае «Очень странных дел» устойчивость интереса аудитории во многом обеспечивается наличием сильного авторского центра — братьев Дафферов.</p>
+      </article>
+
+  </section>
+<section class="section full-screen" id="osd-probability">
+  <div class="container">
+    <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
+      <div class="chart-header">
+        <h2 class="chart-title">Средняя оценка эпизодов <span class="chart-accent">режиссеров</span></h2>
+        <p class="chart-subtitle">Расчет средней оценки эпизодов сериала, относящихся к конкретным режиссерам<span class="chart-accent"> Stranger Things</span></p>
+      </div>
+
+      <div class="chart-container" style="flex: 1; position: relative;">
+        <div class="chart-y-label">Средняя оценка эпизодов</div>
+          <canvas id="osdDirectorRatingChart"></canvas>
+        <div class="chart-x-label">Режиссеры</div>
+      </div>
+
+      <div class="chart-footer">
+        <span class="chart-source">
+          Источник: 
+          <a href="https://github.com/Kree1l/strangethingsdataset/blob/main/TV%20ST%20rating%2Bruntime.csv" target="_blank" rel="noopener">
+            GitHub
+          </a>, 2016–2026
+        </span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="section">
+    <div class="container grid-2">
+      <article class="card glass">
+        <p>В отличие от проектов с более фрагментированной режиссерской структурой, здесь наблюдается: стилистическая целостность, единая драматургическая логика, стабильный высокий средний рейтинг.</p>
+        <p>Таким образом, можно предположить, что расширение команды само по себе не гарантирует роста интереса, а сохранение авторского контроля, напротив, способствует его удержанию.</p>
+      </article>
+
+  </section>
+
+
+
+
+
+
+
+
+<section class="section full-screen" id="umbrella">
+  <div class="container full-layout">
+
+    <article class="card glass">
+      <div class="kicker">Академия Амбрелла</div>
+      <p>Минимальный интерес к сериалу Академия Амбрелла был в период с января 2016 по декабрь 2018 года, хотя о начале разработки сериала по мотивам комиксов, по информации <a href="https://www.usatoday.com/story/life/tv/2015/07/07/universal-cable-dark-horse-entertainment-set-first-look-deal/29813237/" target="_blank" rel="noopener">USA Today</a>, стало известно еще в июле 2015 года, а сам релиз состоялся 15 февраля 2019 года. Длительный «молчаливый» период объясняется типичной для индустрии ситуацией: между анонсом и выходом готового продукта проходит немало времени, а предрелизная маркетинговая активность зачастую ограничена. В результате аудитория практически не вовлечена до момента появления первых серий.</p>
+      
+    </article>
+
+    <div class="visual-stack">
+      <div class="placeholder tall glass" style="display: flex; flex-direction: column; height: 800px;">
+        <div class="chart-header">
+          <h2 class="chart-title">Поисковая популярность <span class="chart-accent">The Umbrella Academy</span> 2019–2024</h2>
+          <p class="chart-subtitle">Индекс поисковой активности в % по запросу <span class="chart-accent">The Umbrella Academy</span>, где 100% — пиковый интерес.</p>
+        </div>
+
+        <div class="chart-container" style="flex: 1; position: relative;">
+          <div class="chart-y-label">Индекс поисковой активности, %</div>
+          <canvas id="umbrellaChart"></canvas>
+          <div class="chart-x-label">Годы</div>
+        </div>
+
+        <div class="chart-footer">
+          <span class="chart-source">
+            Источник данных:
+            <a href="https://trends.google.com/trends/explore?date=2016-01-01%202026-01-13&q=Umbrella%20Academy" target="_blank" rel="noopener">Google Trends</a>
+            , 2019–2024
+          </span>
+          <span class="umbrella-mark" aria-hidden="true" style="font-size: 35px;">☂</span>
+          <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
+        </div>
+      </div>
+
+      <div class="osd-spacer" aria-hidden="true"></div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+  <section class="section">
+    <div class="container grid-2">
+      <article class="card glass">
+        <p>Резкий взлет интереса произошел в августе 2020 года, на что есть четкие причины. Во‑первых, 31 июля 2020 года вышел второй сезон, ставший культовым для фанатов. <a href="https://www.businessinsider.com/umbrella-academy-season-2-biggest-netflix-hit-since-the-witcher-2020-9">Как сообщает Business Insider</a>, в тот период сериал обогнал по популярности даже «Ведьмака», что свидетельствует о сильном зрительском отклике. Во‑вторых, нельзя игнорировать контекст 2020 года: пандемия COVID‑19 и связанный с ней карантин резко увеличили аудиторию стриминговых сервисов. Как отмечало издание <a href="https://www.usatoday.com/story/life/tv/2015/07/07/universal-cable-dark-horse-entertainment-set-first-look-deal/29813237/">Vulture</a>, летом 2020 года платформы находились на пике востребованности, что создало благоприятные условия для роста просмотров и обсуждений. Таким образом, высокий интерес в августе 2020 года стал результатом сочетания как минимум двух факторов: качественного контента (второй сезон) и внешних обстоятельств (рост стримингового потребления).</p>
+        <p>Статистика выявляет выраженную асимметрию в распределении интереса: среднее значение индекса заинтересованности составляет около <b>7,88</b>, тогда как медиана равна всего <b>3</b>. Это говорит о том, что большую часть времени проект находился в зоне низкого внимания, а пики интереса были редкими и интенсивными. Такая динамика типична для сериалов, чья популярность концентрируется вокруг ключевых событий — как, например в этом случае, один сезон «стрельнул», а остальные не вызвали такого интереса аудитории. В «простых» периодах аудитория сохраняет лояльность, но не проявляет активной вовлеченности, что и отражается в низком медианном значении. Академия Амбрелла «вспыхнула» во время пандемии, но не «пережила» её, судя по падению спроса в моменты выходов 3 и 4 сезонов.</p>
+      </article>
+      <div class="grid-2">
+        <div class="card glass votes-card">
+          <h3>Количество оценок сериала</h3>
+          <div class="votes-grid">
+            <div class="vote-item vote-min">
+              <div class="vote-label">Минимум</div>
+              <div class="vote-value count-up">2656</div>
+              <div class="vote-desc">4 сезон, 4 серия<br>«Очищение»</div>
+            </div>
+
+            <div class="vote-item vote-max">
+              <div class="vote-label">Максимум</div>
+              <div class="vote-value count-up">7641</div>
+              <div class="vote-desc">1 сезон, 1 серия<br>«Мы видимся только на свадьбах и похоронах»</div>
+            </div>
+          </div>
+        </div>
+      <article class="card glass">
+        <div class="kicker">Оценки серий: что это было?</div>
+        <p><b>Самой оцененной</b> серией стала пилотная, в 2019 году «Академия Амбрелла» была новым проектом Netflix, который привлек к себе достаточно много внимания из-за обилия креативных спецпроектов и наружной рекламы, приуроченных к запуску. Например, Netflix заказал и установил на пляже Меруэзер в Ньюкасле (Австралия) гигантский зонт с логотипом сериала. По данным <a href="https://www.pedestrian.tv/entertainment/netflix-newcastle-umbrella-academy/" target="_blank" rel="noopener">Pedestrian</a>, его ширина составляет более 12 метров, высота — шесть метров, а ручка — 14 метров. </p>
+      </article>
+      <div class="full-image-block">
+        <div class="image-wrapper">
+          <img src="images/image3.png" alt="">
+        </div>
+
+      <div class="image-meta">
+        <div class="image-caption" style="font-size: 22px;">
+          Гигантский зонт с логотипом сериала.
+        </div>
+
+          <div class="image-source">
+            Источник:
+            <a href="http://PEDESTRIAN.TV">PEDESTRIAN.TV</a>
+          </div>
+        </div>
+      </div>
+      <article class="card glass">
+        <p>Такой контент достаточно быстро становится виральным, привлекает внимание к сериалу и его создателям. Люди смотрят проект и скорее хотят поделиться своим мнением о нем. </p>
+        <p><b>Самой менее оцененной серией</b> стала 4 серия 4 сезона. Одна из очевидных причин — людям «приелся» сериал, а четвертый сезон и вовсе разочаровал. Об этом говорит <a href="https://www.cbr.com/reasons-fans-didnt-like-umbrella-academy-season-4/">статья CBR</a>, а также рейтинг на <a href="https://www.rottentomatoes.com/tv/the_umbrella_academy#seasons">Rotten Tomatoes</a> (58% от критиков), для сравнения, первый сезон получил оценку <b>77%</b>, второй — <b>91%</b>, третий — <b>91%</b>.</p>
+      </article>
+      </div>
+        <div class="card glass votes-card">
+          <h3>Количество голосов по сезонам</h3>
+
+          <div class="votes-grid seasons-umb-grid">
+            <div class="vote-item">
+              <div class="vote-label">1 сезон</div>
+              <div class="vote-value count-up">6056 человек</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">2 сезон</div>
+              <div class="vote-value count-up">4907 человек</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">3 сезон</div>
+              <div class="vote-value count-up">3568 человек</div>
+            </div>
+
+            <div class="vote-item vote-max">
+              <div class="vote-label">4 сезон</div>
+              <div class="vote-value count-up">3257 человек</div>
+            </div>
+          </div>
+          <p>Здесь тоже стоит проследить динамику среднего количества голосов по сезонам. Первый сезон держал отметку в примерно <b>6 тысяч</b> оценок, тогда как четвертый — чуть больше <b>3 тысяч</b>, что связано с потерей интереса. </p>
+
+        </div>
+
+        
+      </div>
+
+    </div>
+  </section>
+<section class="section">
+    <div class="container grid-2">
+      <div class="card glass votes-card">
+          <h3>Рейтинговая оценка серий</h3>
+
+          <div class="votes-grid rate-grid">
+            <div class="vote-item">
+              <div class="vote-label">МИНИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">4,9</span>/10
+              </div>
+              <div class="text">4 сезон, 6 серия, «Конец начала»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">МАКСИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">8,0</span>/10
+              </div>
+              <div class="text">2 сезон, 10 серия, «Этап пройден»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">СРЕДНЯЯ</div>
+              <div class="vote-value">
+                <span class="count-up">7,7</span>/10
+              </div>
+            </div>
+          </div>
+
+        <p>Серия <b>с самой низкой оценкой</b> относится к финальному сезону сериала, что связано с неоправдавшимися ожиданиями зрителей, о чем я уже сказала выше. Серия же <b>с самой высокой оценкой</b> относится ко второму сезону АА, что оправдано необычным сюжетным поворотом, который запустил большое обсуждение среди фанатов в социальных сетях: члены Академии собираются вернуться в 2019 год, но оказывается, что это не их дом и живет там не Академия Амбрелла, а Академия Спарроу. При этом, средняя оценка всего сезона <b>7,7/10</b> говорит о том, что сериал достаточно качественный и интересный. </p>
+      </div> 
+    </div>
+  </section>
+
+<section class="section">
+    <div class="container grid-2">
+          <div class="card glass votes-card">
+          <h3>Хронометраж</h3>
+
+          <div class="votes-grid rate-grid">
+            <div class="vote-item">
+              <div class="vote-label">МИНИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">39</span> минут
+              </div>
+              <div class="text">3 сезон, 9 серия, «Семь колоколов»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">МАКСИМУМ</div>
+              <div class="vote-value">
+                <span class="count-up">69</span> минут
+              </div>
+              <div class="text">4 сезон, 6 серия, «Конец начала»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">СРЕДНЯЯ</div>
+              <div class="vote-value">
+                <span class="count-up">50</span> минут
+              </div>
+            </div>
+            
+          </div>
+          <p>К сожалению, нет ни одного исследования, статьи или датасета, которые бы предоставили информацию о среднем хронометраже сериалов Netflix (единственный похожий материал — <a href="https://www.whats-on-netflix.com/news/how-long-would-it-take-to-watch-all-of-netflix/">статья Кейси Мура</a> о длительности всех серий). Поэтому, сделать четкий вывод о том, насколько этот сериал попал в тренд Netflix по хронометражу — сложно. Однако в сравнении с предыдущим проанализированным сериалом ОСД можно сделать вывод о том, что Академия Амбрелла соответствует канонам часовых серий стримингового сервиса.</p>
+      </div>
+    
+  </section>
+
+<section class="section full-screen" id="umbrella-runtime">
+  <div class="container">
+    <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
+      <div class="chart-header">
+        <h1 class="chart-title"><span class="chart-accent">Дольше</span> серия — <span class="chart-accent">ниже</span> рейтинг</h1>
+        <p class="chart-subtitle">Расчет коэффициента корреляции Пирсона между средней оценкой серии The Umbrella Academy и ее продолжительностью в минутах</p>
+      </div>
+
+      <div class="chart-container" style="flex: 1; position: relative;">
+        <div class="chart-y-label">Средняя оценка</div>
+        <canvas id="umbrellaRuntimeRatingChart"></canvas>
+        <div class="chart-x-label">Продолжительность, мин</div>
+      </div>
+
+      <div class="chart-footer">
+        <span class="chart-source">
+          Источник:
+          <a href="https://github.com/Kree1l/theumberllaacademydataset/blob/main/Umbrella%20Academy%20rate%20show.tsv" target="_blank" rel="noopener">
+            GitHub
+          </a>, 2019–2024
+        </span>
+        <span class="umbrella-mark" aria-hidden="true" style="font-size: 35px;">☂</span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <article class="card glass">
+      <p>Кроме того, уже с этими результатами можно подтвердить гипотезу нашего исследования. Второй сезон по среднему хронометражу <b>является самым коротким — 47 минут</b> — и при этом имеет <b>самую высокую оценку</b> среди пользователей (<b>8,3</b>), тогда как самый длинный и, казалось бы, самый затратный по, например, съемочному времени четвертый сезон — <b>56 минут</b> — оценили хуже всего (<b>6,3</b>). Данные не говорят, что зрителям не нравятся длинные серии, скорее, дополнительное время не было заполнено контентом, который бы повысил качество проекта. Увеличение масштаба могло привести к растянутости сюжета, замедлению темпа, излишним сюжетным линиям — что вызвало разочарование и падение рейтингов. </p>
+      <p>По этим данным, был рассчитан коэффициент корреляции между длительностью серии и ее средней оценкой. Полученное значение <b>-0,567</b> говорит об умеренной отрицательной линейной зависимости: в большинстве случаев с увеличением длительности серии ее рейтинг снижается, а не наоборот. </p>
+    </article>
+  </div>
+</section>
+
+<section class="section full-screen" id="umbrella-directors">
+  <div class="container">
+    <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
+      <div class="chart-header">
+        <h2 class="chart-title">Средняя оценка эпизодов <span class="chart-accent">конкретных</span> режиссеров</h2>
+        <p class="chart-subtitle">Расчет средней оценки эпизодов сериала, относящихся к конкретным режиссерам <span class="chart-accent">The Umbrella Academy</span></p>
+      </div>
+
+      <div class="chart-container" style="flex: 1; position: relative;">
+        <div class="chart-y-label">Средняя оценка эпизодов</div>
+        <canvas id="umbrellaDirectorRatingChart"></canvas>
+        <div class="chart-x-label">Фамилии режиссеров</div>
+      </div>
+
+      <div class="chart-footer">
+        <span class="chart-source">
+          Источник:
+          <a href="https://github.com/Kree1l/theumberllaacademydataset/blob/main/Umbrella%20Academy%20rate%20show.tsv" target="_blank" rel="noopener">
+            GitHub
+          </a>, 2019–2024
+        </span>
+        <span class="umbrella-mark" aria-hidden="true" style="font-size: 35px;">☂</span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid-2">
+    <article class="card glass">
+      <p>Если рассматривать режиссерский фактор как возможный драйвер интереса аудитории, можно отметить несколько наблюдений на примере «Академии Амбрелла».
+</p>
+      <p>Во-первых, над сериалом <b>работали 12 режиссеров</b>, каждый из которых снял <b>от 1 до 6 серий</b>, что указывает на фрагментированную авторскую структуру. В связи с невозможностью применить коэффициент корреляции Пирсона были рассчитаны средние оценки серий, снятых каждым режиссером.</p>
+      <p>Во-вторых, наиболее высокие рейтинги показали серии <b>Питера Хора, Эллен Курас и Аманды Марсалис</b>, что позволяет предположить влияние индивидуального режиссерского видения на восприятие эпизодов.
+</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="quote-profile-block glass">
+      <div class="quote-text">
+        “Огромный охват стриминговой платформы, такой как Netflix, влияет на то, что становится частью культурной памяти и что забывается, формируя массовую культуру таким образом, как традиционные медиа никогда не делали.”
+      </div>
+
+      <div class="quote-profile-content">
+        <div class="quote-profile-photo">
+          <img src="images/speaker.png" alt="Фото спикера">
+        </div>
+
+        <div class="quote-profile-meta">
+          <div class="quote-meta-group">
+            <div class="quote-meta-label">Автор цитаты</div>
+            <div class="quote-meta-text">Рампаццо Гамбарато Ренира</div>
+          </div>
+
+          <div class="quote-meta-group">
+            <div class="quote-meta-label">Должность автора цитаты</div>
+            <div class="quote-meta-text">
+              Профессор медиа и коммуникационных исследований в Школе образования и коммуникации Университета Йёнчёпинга, Швеция. В прошлом — <a href="https://ju.se/en/personinfo?id=3433"> доцент ВШЭ</a> Департамента медиа факультета коммуникации, медиа и дизайна.
+            </div>
+          </div>
+
+          <div class="quote-meta-text">
+            <a href="https://journals.sagepub.com/doi/full/10.1177/13675494221128332" target="_blank" rel="noopener">Источник цитаты</a>
+            <br>
+            <a href="https://ju.se/en/personinfo?id=3433" target="_blank" rel="noopener">Источник фото спикера</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="conclusions">
+  <div class="container">
+    <div class="card glass" style="padding:40px;">
+      <div class="kicker">Выводы</div>
+      <h2 style="margin-bottom:18px;">Гипотеза исследования подтвердилась</h2>
+      <p>Увеличение хронометража и масштабов сезонов само по себе не гарантирует роста интереса аудитории и в ряде случаев, наоборот, приводит к обратному эффекту.</p>
+    </div>
+
+    <div class="grid-2" style="margin-top:18px;">
+      <div class="card glass" style="padding:32px;">
+        <h3>Хронометраж сам по себе не работает</h3>
+        <p>В случае с сериалом «Очень странные дела» коэффициент корреляции Пирсона между средней оценкой серии и ее хронометражем фактически равен нулю. Это означает, что увеличение длительности эпизода само по себе не влияет на интерес аудитории.</p>
+        <p>У «Академии Амбрелла», напротив, между этими величинами наблюдается умеренная отрицательная линейная зависимость. Иными словами, чем длиннее становилась серия, тем выше была вероятность более сдержанной зрительской оценки.</p>
+        <p>Зрители готовы принимать большой хронометраж только тогда, когда он оправдан содержательно и поддерживается цельным авторским видением. Масштаб без качества приводит к разочарованию.</p>
+      </div>
+
+      <div class="card glass" style="padding:32px;">
+        <h3>Внешний контекст влияет не меньше самого сериала</h3>
+        <p>При анализе сериалов важно учитывать не только внутренние характеристики проекта, но и внешний медиаконтекст. Пиковые значения популярности обоих сериалов пришлись на 2020 год — период пандемии, когда интерес к стриминговым сервисам и их продуктам заметно вырос из-за карантинных ограничений.</p>
+        <p>Это показывает, что динамика зрительского внимания формируется не только за счет сценария, режиссуры или масштаба сезона, но и под воздействием более широкой социальной и культурной среды.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:18px;">
+      <div class="card glass" style="padding:32px;">
+        <h3>Маркетинг Netflix усиливает интерес</h3>
+        <p>Необходимо учитывать и маркетинговые стратегии Netflix, которые сервис реализует перед стартом сериала или нового сезона, а также в момент выхода новых серий. Платформа активно запускает виральные спецпроекты и коллаборации с брендами — например, в случае с Kinder Joy и героями «Очень странных дел».</p>
+        <p>Информация о таких кампаниях быстро расходится по социальным сетям, особенно в формате коротких видео, и получает отклик от аудитории в виде обсуждений, репостов и, конечно, просмотров.</p>
+      </div>
+
+      <div class="card glass" style="padding:32px;">
+        <h3>Финал сезона — это эффект события</h3>
+        <p>Финальные сезоны и особенно заключительные серии могут собирать рекордное количество просмотров и голосов не только благодаря высокому качеству или уникальным режиссерским решениям.</p>
+        <p>Во многом здесь работает эффект события, эмоциональное ожидание развязки и фактор ностальгии. Зритель реагирует не просто на отдельный эпизод, а на завершение большой истории, за которой следил несколько лет.</p>
+      </div>
+    </div>
+
+    <div class="card glass" style="padding:40px; margin-top:18px; border:1px solid rgba(229,23,29,.34); background:linear-gradient(180deg, rgba(229,23,29,.12), rgba(255,255,255,.03));">
+      <div class="kicker">Ключевой момент</div>
+      <h2 style="margin-bottom:18px;">Сила проекта — в авторском центре</h2>
+      <p>Одним из самых неожиданных открытий исследования стало то, что важнейшим фактором устойчивого интереса зрителей оказалась стабильность и сила режиссерской команды. Сохранение авторского центра в лице братьев Даффер позволило «Очень странным делам» оставаться на высоком уровне на протяжении десяти лет.</p>
+      <p>В случае «Академии Амбрелла» более фрагментированная режиссура, при которой внутри проекта сосуществовали разные подходы и интонации, вероятно, стала одной из причин постепенного угасания интереса, если сопоставлять статистику просмотров и оценок в начале и в конце сериала.</p>
+      <p>Вывод оказывается довольно простым, но принципиально важным: даже в эпоху больших данных, огромных бюджетов Netflix и все более автоматизированного производства контента главным конкурентным преимуществом по-прежнему остаются уникальная идея, креативность и сильное авторское видение.</p>
+    </div>
+  </div>
+</section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card glass muted">
+       *«Международное общественное движение ЛГБТ» признано экстремистским и запрещено на территории РФ
+**Инстаграм входит в компанию Meta, признанную экстремистской и запрещенной на территории РФ
+
+      </div>
+    </div>
+  </footer>
+
+<script>
+const osdLabels = [
+  "2016-01","2016-02","2016-03","2016-04","2016-05","2016-06","2016-07","2016-08","2016-09","2016-10","2016-11","2016-12",
+  "2017-01","2017-02","2017-03","2017-04","2017-05","2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12",
+  "2018-01","2018-02","2018-03","2018-04","2018-05","2018-06","2018-07","2018-08","2018-09","2018-10","2018-11","2018-12",
+  "2019-01","2019-02","2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12",
+  "2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12",
+  "2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12",
+  "2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12",
+  "2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12",
+  "2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12",
+  "2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12",
+  "2026-01"
+];
+
+const osdValues = [
+  1,1,1,1,1,1,10,17,12,7,15,10,
+  5,6,3,2,2,2,4,3,4,25,41,18,
+  13,8,6,5,4,4,4,4,4,4,4,3,
+  4,3,4,3,3,7,54,17,9,9,7,6,
+  6,7,6,8,7,6,6,6,5,6,5,5,
+  6,5,5,5,5,5,6,5,4,3,5,3,
+  4,4,3,6,32,65,72,24,13,10,7,6,
+  6,5,5,5,4,5,5,4,4,4,4,3,
+  4,3,4,4,4,4,6,4,4,4,4,4,
+  4,4,4,4,5,7,7,6,5,10,49,79,
+  100
+];
+
+const ctx = document.getElementById('osdChart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: osdLabels,
+    datasets: [{
+      data: osdValues,
+      borderColor: '#ff1d25',
+      borderWidth: 3,
+      tension: 0.28,
+      pointRadius: 0,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: '#ff1d25',
+      pointHoverBorderColor: '#ffffff',
+      pointHoverBorderWidth: 1.5,
+      fill: false
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 28,
+        right: 20,
+        bottom: 14,
+        left: 8
+      }
+    },
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#0f1a26',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#E5171D',
+        borderWidth: 1,
+        displayColors: false,
+        padding: 10,
+        callbacks: {
+          title: function(items) {
+            return items[0].label;
+          },
+          label: function(context) {
+            return 'Индекс: ' + context.parsed.y;
+          }
+        }
+      },
+      annotation: {
+        clip: false,
+        annotations: {
+          peak2016: {
+            type: 'label',
+            xValue: '2016-08',
+            yValue: 17,
+            content: ['Август–ноябрь 2016', 'Вышел 1 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: 3,
+            yAdjust: -50,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+
+          peak2017: {
+            type: 'label',
+            xValue: '2017-11',
+            yValue: 41,
+            content: ['Ноябрь 2017', 'Вышел 2 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: -18,
+            yAdjust: -42,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+
+          peak2019: {
+            type: 'label',
+            xValue: '2019-07',
+            yValue: 54,
+            content: ['Июль 2019', 'Вышел 3 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: 8,
+            yAdjust: -42,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+
+          peak2022: {
+            type: 'label',
+            xValue: '2022-06',
+            yValue: 69,
+            content: ['Июнь 2022', 'Вышел 4 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: 10,
+            yAdjust: -65,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+
+          peak2025: {
+            type: 'label',
+            xValue: '2025-07',
+            yValue: 79,
+            content: ['Декабрь 2025', 'Вышел 5 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: -18,
+            yAdjust: -56,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'rgba(255,255,255,0.8)',
+          autoSkip: false,
+          maxRotation: 0,
+          minRotation: 0,
+          callback: function(value, index) {
+            const label = this.getLabelForValue(value);
+            return label.endsWith('-01') ? label.slice(0, 4) : '';
+          }
+        },
+        grid: {
+          display: false
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      },
+      y: {
+        min: 0,
+        max: 100,
+        ticks: {
+          stepSize: 10,
+          color: 'rgba(255,255,255,0.8)'
+        },
+        title: {
+          display: false
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.12)',
+          lineWidth: 1
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      }
+    }
+  }
+});
+</script>
+<script>
+function animateCount(el, duration = 1200) {
+  const text = el.textContent.trim();
+
+  // определяем число (с пробелами или запятыми)
+  const number = parseFloat(text.replace(/\s/g, '').replace(',', '.'));
+
+  if (isNaN(number)) return;
+
+  const isFloat = text.includes('.') || text.includes(',');
+
+  let start = 0;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+
+    const value = start + (number - start) * progress;
+
+    if (isFloat) {
+      el.textContent = value.toFixed(1);
+    } else {
+      el.textContent = Math.floor(value).toLocaleString('ru-RU');
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = isFloat
+        ? number.toFixed(1)
+        : number.toLocaleString('ru-RU');
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+// запуск при появлении на экране
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCount(entry.target);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.count-up').forEach(el => {
+  observer.observe(el);
+});
+</script>
+<script>
+const runtimeRatingCtx = document.getElementById('osdRuntimeRatingChart');
+
+const runtimeRatingData = [
+  { x: 47, y: 8.6 }, { x: 55, y: 8.3 }, { x: 51, y: 8.8 }, { x: 49, y: 8.9 },
+  { x: 52, y: 8.6 }, { x: 46, y: 8.8 }, { x: 41, y: 9.0 }, { x: 54, y: 9.3 },
+
+  { x: 48, y: 8.1 }, { x: 56, y: 8.2 }, { x: 51, y: 8.5 }, { x: 46, y: 8.5 },
+  { x: 58, y: 8.8 }, { x: 51, y: 9.1 }, { x: 45, y: 6.0 }, { x: 47, y: 9.2 },
+  { x: 62, y: 9.3 },
+
+  { x: 50, y: 7.8 }, { x: 50, y: 7.9 }, { x: 49, y: 8.2 }, { x: 52, y: 8.9 },
+  { x: 51, y: 8.5 }, { x: 59, y: 8.5 }, { x: 55, y: 8.7 }, { x: 77, y: 9.3 },
+
+  { x: 75, y: 8.1 }, { x: 75, y: 8.1 }, { x: 62, y: 8.3 }, { x: 77, y: 9.5 },
+  { x: 74, y: 8.1 }, { x: 73, y: 8.5 }, { x: 98, y: 9.6 }, { x: 84, y: 8.7 },
+  { x: 139, y: 9.2 },
+
+  { x: 71, y: 7.9 }, { x: 57, y: 8.3 }, { x: 69, y: 8.5 }, { x: 86, y: 9.4 },
+  { x: 68, y: 7.9 }, { x: 75, y: 8.0 }, { x: 66, y: 5.7 }, { x: 128, y: 7.6 }
+];
+
+// Линия тренда по данным CSV:
+// y = 0.00367656 * x + 8.22263
+const trendline = [
+  { x: 40,  y: 8.3697 },
+  { x: 140, y: 8.7373 }
+];
+
+new Chart(runtimeRatingCtx, {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: 'Эпизоды Stranger Things',
+        data: runtimeRatingData,
+        backgroundColor: '#E5171D',
+        borderColor: '#ffffff',
+        borderWidth: 1.2,
+        pointRadius: function(ctx) {
+          const x = ctx.raw.x;
+          if (x === 50 || x === 120) return 7;
+          return 5;
+        },
+        pointHoverRadius: 9,
+        pointHoverBackgroundColor: '#ffffff',
+        pointHoverBorderColor: '#E5171D',
+        pointHoverBorderWidth: 2
+      },
+      {
+        type: 'line',
+        label: 'Линия тренда',
+        data: trendline,
+        borderColor: 'rgba(255,255,255,0.65)',
+        borderWidth: 2,
+        borderDash: [7, 7],
+        pointRadius: 0,
+        fill: false,
+        tension: 0
+      },
+
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 40,
+        right: 30,
+        bottom: 20,
+        left: 20
+      }
+    },
+    interaction: {
+      mode: 'nearest',
+      intersect: false
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#0f1a26',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#E5171D',
+        borderWidth: 1,
+        displayColors: false,
+        padding: 10,
+        callbacks: {
+          title: function(context) {
+            const p = context[0].raw;
+            if (p.x === 50 && p.y === 8.3) return 'Опорная точка';
+            if (p.x === 120 && p.y === 8.35) return 'Опорная точка';
+            return 'Эпизод Stranger Things';
+          },
+          label: function(context) {
+            return [
+              'Хронометраж: ' + context.raw.x + ' минут',
+              'Оценка: ' + context.raw.y + '/10'
+            ];
+          }
+        }
+      },
+    },
+    scales: {
+      x: {
+        min: 35,
+        max: 145,
+        ticks: {
+          stepSize: 10,
+          color: 'rgba(255,255,255,0.8)'
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.08)'
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      },
+      y: {
+        min: 5,
+        max: 10,
+        ticks: {
+          stepSize: 0.5,
+          color: 'rgba(255,255,255,0.8)'
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.12)'
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      }
+    }
+  }
+});
+</script>
+<script>
+const directorRatingCtx = document.getElementById('osdDirectorRatingChart');
+
+const directorLabels = [
+  ['Andrew', 'Stanton'],
+  ['Frank', 'Darabont'],
+  ['Matt Duffer,', 'Ross Duffer'],
+  ['Matt Duffer,', 'Ross Duffer, Shawn Levy'],
+  ['Nimród', 'Antal'],
+  ['Rebecca', 'Thomas'],
+  ['Shawn', 'Levy'],
+  ['Uta', 'Briesewitz']
+];
+
+const directorValues = [
+  8.95, // Andrew Stanton
+  8.20, // Frank Darabont
+  8.61, // Duffers
+  5.70, // Duffers + Levy
+  8.30, // Nimrod Antal
+  6.00, // Rebecca Thomas
+  8.62, // Shawn Levy
+  8.50  // Uta Briesewitz
+];
+
+const valueLabelPlugin = {
+  id: 'valueLabelPlugin',
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    const meta = chart.getDatasetMeta(0);
+
+    ctx.save();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '600 12px "Advent Pro", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+
+    meta.data.forEach((bar, index) => {
+      const value = directorValues[index].toFixed(2);
+      ctx.fillText(value, bar.x, bar.y - 6);
+    });
+
+    ctx.restore();
+  }
+};
+
+new Chart(directorRatingCtx, {
+  type: 'bar',
+  data: {
+    labels: directorLabels,
+    datasets: [{
+      data: directorValues,
+      backgroundColor: [
+        'rgba(229, 23, 29, 0.88)',
+        'rgba(229, 23, 29, 0.80)',
+        'rgba(229, 23, 29, 0.76)',
+        'rgba(229, 23, 29, 0.70)',
+        'rgba(229, 23, 29, 0.62)',
+        'rgba(229, 23, 29, 0.56)',
+        'rgba(229, 23, 29, 0.44)',
+        'rgba(229, 23, 29, 0.36)'
+      ],
+      borderColor: '#ffffff',
+      borderWidth: 1.2,
+      borderRadius: 8,
+      borderSkipped: false,
+      hoverBackgroundColor: '#ffffff',
+      hoverBorderColor: '#E5171D',
+      hoverBorderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 42,
+        right: 20,
+        bottom: 14,
+        left: 8
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#0f1a26',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#E5171D',
+        borderWidth: 1,
+        displayColors: false,
+        padding: 10,
+        callbacks: {
+          title: function(items) {
+            const label = items[0].label;
+            return Array.isArray(label) ? label.join(' ') : label;
+          },
+          label: function(context) {
+            return 'Средняя оценка: ' + context.parsed.y.toFixed(2) + '/10';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'rgba(255,255,255,0.82)',
+          maxRotation: 0,
+          minRotation: 0,
+          font: {
+            size: 11
+          }
+        },
+        grid: {
+          display: false
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      },
+      y: {
+        min: 0,
+        max: 10,
+        ticks: {
+          stepSize: 1,
+          color: 'rgba(255,255,255,0.82)'
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.12)',
+          lineWidth: 1
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      }
+    }
+  },
+  plugins: [valueLabelPlugin]
+});
+</script>
+<script>
+const umbrellaLabels = [
+  "2016-01","2016-02","2016-03","2016-04","2016-05","2016-06","2016-07","2016-08","2016-09","2016-10","2016-11","2016-12",
+  "2017-01","2017-02","2017-03","2017-04","2017-05","2017-06","2017-07","2017-08","2017-09","2017-10","2017-11","2017-12",
+  "2018-01","2018-02","2018-03","2018-04","2018-05","2018-06","2018-07","2018-08","2018-09","2018-10","2018-11","2018-12",
+  "2019-01","2019-02","2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12",
+  "2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12",
+  "2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12",
+  "2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12",
+  "2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12",
+  "2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12",
+  "2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12",
+  "2026-01"
+];
+
+const umbrellaValues = [
+  1,1,1,1,1,1,1,1,1,1,1,1,
+  1,1,1,1,1,1,1,1,1,1,1,1,
+  1,1,1,1,1,1,1,1,1,1,1,1,
+  2,90,56,18,9,8,7,6,4,4,4,5,
+  5,5,6,7,7,9,21,100,32,19,18,21,
+  20,16,13,13,12,10,9,9,8,6,5,5,
+  8,6,7,7,8,58,45,13,7,5,4,5,
+  5,5,4,3,3,4,4,3,3,3,2,3,
+  3,4,3,3,4,5,7,41,9,4,3,2,
+  2,2,2,2,2,2,2,2,2,2,2,2,
+  2
+];
+
+const umbrellaCtx = document.getElementById('umbrellaChart');
+
+new Chart(umbrellaCtx, {
+  type: 'line',
+  data: {
+    labels: umbrellaLabels,
+    datasets: [{
+      data: umbrellaValues,
+      borderColor: '#ff1d25',
+      borderWidth: 3,
+      tension: 0.28,
+      pointRadius: 0,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: '#ff1d25',
+      pointHoverBorderColor: '#ffffff',
+      pointHoverBorderWidth: 1.5,
+      fill: false
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 28,
+        right: 20,
+        bottom: 14,
+        left: 8
+      }
+    },
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#0f1a26',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#E5171D',
+        borderWidth: 1,
+        displayColors: false,
+        padding: 10,
+        callbacks: {
+          title: function(items) {
+            return items[0].label;
+          },
+          label: function(context) {
+            return 'Индекс: ' + context.parsed.y;
+          }
+        }
+      },
+      annotation: {
+        clip: false,
+        annotations: {
+          peak2019: {
+            type: 'label',
+            xValue: '2019-02',
+            yValue: 85,
+            content: ['Февраль 2019', 'Вышел 1 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: 10,
+            yAdjust: -46,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+
+          peak2020: {
+            type: 'label',
+            xValue: '2021-05',
+            yValue: 85,
+            content: ['Август 2020', 'Вышел 2 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: 10,
+            yAdjust: -52,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+          peak2022: {
+            type: 'label',
+            xValue: '2022-06',
+            yValue: 53,
+            content: ['Июнь 2022', 'Вышел 3 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: 12,
+            yAdjust: -44,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+
+          peak2024: {
+            type: 'label',
+            xValue: '2024-08',
+            yValue: 37,
+            content: ['Август 2024', 'Вышел 4 сезон'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+            xAdjust: 10,
+            yAdjust: -40,
+            textAlign: 'left',
+            font: {
+              size: 12,
+              weight: '500'
+            }
+          },
+
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'rgba(255,255,255,0.8)',
+          autoSkip: false,
+          maxRotation: 0,
+          minRotation: 0,
+          callback: function(value) {
+            const label = this.getLabelForValue(value);
+            return label.endsWith('-01') ? label.slice(0, 4) : '';
+          }
+        },
+        grid: {
+          display: false
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      },
+      y: {
+        min: 0,
+        max: 100,
+        ticks: {
+          stepSize: 10,
+          color: 'rgba(255,255,255,0.8)'
+        },
+        title: {
+          display: false
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.12)',
+          lineWidth: 1
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      }
+    }
+  }
+});
+</script>
+<script>
+const umbrellaRuntimeCtx = document.getElementById('umbrellaRuntimeRatingChart');
+
+const umbrellaRuntimeRatingData = [
+  { x: 58, y: 7.7 }, { x: 56, y: 7.7 }, { x: 55, y: 7.8 }, { x: 55, y: 7.9 },
+  { x: 59, y: 8.2 }, { x: 57, y: 8.3 }, { x: 55, y: 8.1 }, { x: 50, y: 8.5 },
+  { x: 44, y: 8.4 }, { x: 46, y: 8.7 },
+
+  { x: 47, y: 8.2 }, { x: 48, y: 8.0 }, { x: 48, y: 8.2 }, { x: 48, y: 8.0 },
+  { x: 47, y: 8.1 }, { x: 50, y: 8.2 }, { x: 47, y: 8.4 }, { x: 46, y: 8.5 },
+  { x: 40, y: 8.7 }, { x: 49, y: 8.9 },
+
+  { x: 50, y: 7.6 }, { x: 52, y: 6.8 }, { x: 49, y: 7.6 }, { x: 51, y: 7.6 },
+  { x: 44, y: 7.4 }, { x: 48, y: 7.3 }, { x: 52, y: 7.7 }, { x: 49, y: 7.1 },
+  { x: 39, y: 7.7 }, { x: 49, y: 7.3 },
+
+  { x: 52, y: 6.6 }, { x: 47, y: 7.2 }, { x: 56, y: 6.7 }, { x: 55, y: 6.4 },
+  { x: 58, y: 5.7 }, { x: 69, y: 4.9 }
+];
+
+// Нисходящая трендовая линия для визуализации отрицательной зависимости
+const umbrellaTrendline = [
+  { x: 39, y: 8.55 },
+  { x: 69, y: 5.85 }
+];
+
+new Chart(umbrellaRuntimeCtx, {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        label: 'Эпизоды The Umbrella Academy',
+        data: umbrellaRuntimeRatingData,
+        backgroundColor: '#E5171D',
+        borderColor: '#ffffff',
+        borderWidth: 1.2,
+        pointRadius: 6,
+        pointHoverRadius: 9,
+        pointHoverBackgroundColor: '#ffffff',
+        pointHoverBorderColor: '#E5171D',
+        pointHoverBorderWidth: 2
+      },
+      {
+        type: 'line',
+        label: 'Линия тренда',
+        data: umbrellaTrendline,
+        borderColor: 'rgba(255,255,255,0.72)',
+        borderWidth: 2,
+        borderDash: [7, 7],
+        pointRadius: 0,
+        fill: false,
+        tension: 0
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 40,
+        right: 30,
+        bottom: 20,
+        left: 20
+      }
+    },
+    interaction: {
+      mode: 'nearest',
+      intersect: false
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#0f1a26',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#E5171D',
+        borderWidth: 1,
+        displayColors: false,
+        padding: 10,
+        callbacks: {
+          title: function() {
+            return 'Эпизод The Umbrella Academy';
+          },
+          label: function(context) {
+            return [
+              'Хронометраж: ' + context.raw.x + ' минут',
+              'Оценка: ' + context.raw.y + '/10'
+            ];
+          }
+        }
+      },
+      annotation: {
+        annotations: {
+          corrBox: {
+            type: 'label',
+            xValue: 61,
+            yValue: 7.0,
+            content: ['r = -0,567'],
+            color: '#ffffff',
+            backgroundColor: 'rgba(229,23,29,0.16)',
+            borderColor: 'rgba(229,23,29,0.45)',
+            borderWidth: 1,
+            padding: 10,
+            cornerRadius: 8,
+            font: {
+              size: 12,
+              weight: '600'
+            }
+          },
+
+        }
+      }
+    },
+    scales: {
+      x: {
+        min: 35,
+        max: 72,
+        ticks: {
+          stepSize: 5,
+          color: 'rgba(255,255,255,0.8)'
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.08)'
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      },
+      y: {
+        min: 4.5,
+        max: 9.5,
+        ticks: {
+          stepSize: 0.5,
+          color: 'rgba(255,255,255,0.8)'
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.12)'
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      }
+    }
+  }
+});
+</script>
+<script>
+const umbrellaDirectorCtx = document.getElementById('umbrellaDirectorRatingChart');
+
+const umbrellaDirectorLabels = [
+  'BERNSTEIN',
+  'CABEZAS',
+  'DUNYE',
+  'HOAR',
+  'KIDD',
+  'KING',
+  'KURAS',
+  'MARSALIS',
+  'SURJIK',
+  'VERICA',
+  'WEBB',
+  'WHITE'
+];
+
+const umbrellaDirectorValues = [
+  7.75, // Bernstein
+  6.53, // Cabezas
+  7.20, // Dunye
+  8.20, // Hoar
+  5.70, // Kidd
+  7.30, // King
+  8.15, // Kuras
+  8.60, // Marsalis
+  8.15, // Surjik
+  8.05, // Verica
+  8.20, // Webb
+  7.50  // White
+];
+
+const umbrellaValueLabelPlugin = {
+  id: 'umbrellaValueLabelPlugin',
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    const meta = chart.getDatasetMeta(0);
+
+    ctx.save();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '600 12px "Advent Pro", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+
+    meta.data.forEach((bar, index) => {
+      const value = umbrellaDirectorValues[index].toFixed(2);
+      ctx.fillText(value, bar.x, bar.y - 6);
+    });
+
+    ctx.restore();
+  }
+};
+
+new Chart(umbrellaDirectorCtx, {
+  type: 'bar',
+  data: {
+    labels: umbrellaDirectorLabels,
+    datasets: [{
+      data: umbrellaDirectorValues,
+      backgroundColor: 'rgba(229, 23, 29, 0.88)',
+      borderColor: '#ffffff',
+      borderWidth: 1.2,
+      borderRadius: 0,
+      borderSkipped: false,
+      hoverBackgroundColor: '#ffffff',
+      hoverBorderColor: '#E5171D',
+      hoverBorderWidth: 2,
+      barPercentage: 0.55,
+      categoryPercentage: 0.85
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 42,
+        right: 20,
+        bottom: 14,
+        left: 8
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: '#0f1a26',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#E5171D',
+        borderWidth: 1,
+        displayColors: false,
+        padding: 10,
+        callbacks: {
+          title: function(items) {
+            return items[0].label;
+          },
+          label: function(context) {
+            return 'Средняя оценка: ' + context.parsed.y.toFixed(2) + '/10';
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'rgba(255,255,255,0.9)',
+          maxRotation: 0,
+          minRotation: 0,
+          font: {
+            size: 10,
+            weight: '700'
+          }
+        },
+        title: {
+          display: false
+        },
+        grid: {
+          display: false
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      },
+      y: {
+        min: 0,
+        max: 10,
+        ticks: {
+          stepSize: 1,
+          color: 'rgba(255,255,255,0.82)'
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.12)',
+          lineWidth: 1
+        },
+        border: {
+          color: 'rgba(255,255,255,0.35)',
+          width: 1.2
+        }
+      }
+    }
+  },
+  plugins: [umbrellaValueLabelPlugin]
+});
+</script>
+</body>
+</html>
