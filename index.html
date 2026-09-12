@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>At the Limits of Audience Engagement: When Does Interest in Netflix Series Begin to Decline</title>
+  <title>На пределе вовлеченности: где заканчивается интерес зрителя Netflix</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&family=Advent+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -490,7 +490,7 @@
     display: block;
 }
 
-
+/* Оверлей */
 #lightbox {
     position: fixed;
     inset: 0;
@@ -518,7 +518,7 @@
     cursor: zoom-out;
 }
     .chart-subtitle {
-        font-size: 20px;
+        font-size: 20px; /* увеличили */
         margin: 0;
         color: var(--muted);
         text-align: left;
@@ -562,7 +562,7 @@
   .vote-value {
     font-size: 36px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--accent); /* 🔥 красный акцент */
     margin-bottom: 10px;
   }
 
@@ -588,27 +588,28 @@
     }
     .seasons-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(5, 1fr); /* 👈 не растягиваем */
       justify-content: center;  
       gap: 12px;
       width: 100%;
     }
     .seasons-umb-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); 
+      grid-template-columns: repeat(4, 1fr); /* 👈 не растягиваем */
       justify-content: center;  
       gap: 12px;
       width: 100%;
     }
 
     .seasons-grid .vote-item {
-      aspect-ratio: auto;
+      aspect-ratio: auto;/* 👈 квадрат */
+      display: flex;
       flex-direction: column;
       align-items: left;
       text-align: left;
       padding: 12px;
       width: 200px;
-      width: 100%; 
+      width: 100%;          /* 👈 размер квадрата */
       max-width: 100%;
     }
 
@@ -624,20 +625,20 @@
 
     .rate-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr); /* 👈 не растягиваем */
       justify-content: center;  
       gap: 12px;
       width: 100%;
     }
     .rate-grid .vote-item {
-      aspect-ratio: auto;
+      aspect-ratio: auto;/* 👈 квадрат */
       display: flex;
       flex-direction: column;
       align-items: left;
       text-align: left;
       padding: 12px;
       width: 200px;
-      width: 100%;   
+      width: 100%;          /* 👈 размер квадрата */
       max-width: 100%;
     }
 
@@ -859,7 +860,7 @@
     }
     #osd .placeholder.tall {
     padding: 16px 12px 20px;
-    height: 720px;
+    height: 720px; /* 👈 фиксированная высота */
     display: flex;
     flex-direction: column;
     }
@@ -942,6 +943,7 @@
   color: var(--muted);
   text-align: right;
 }
+/* акценты */
 
 .rating-max {
   background: rgba(229,23,29,.12);
@@ -952,24 +954,24 @@
   background: rgba(255,255,255,.06);
 }
   </style>
-</head> 
+</head>
 <body>
   <header class="nav">
     <div class="nav-inner">
-      <div class="brand">Olga Kulishenko</div>
+      <div class="brand">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия</div>
       <div class="date">22.03.2026</div>
     </div>
   </header>
 
   <section class="hero" id="top">
     <div class="hero-media"></div>
-    <a class="source-link" href="https://unsplash.com/photos/a-black-square-with-a-red-n-on-it-sOU09hnONrQ" target="_blank" rel="noopener">Image source</a>
+    <a class="source-link" href="https://unsplash.com/photos/a-black-square-with-a-red-n-on-it-sOU09hnONrQ" target="_blank" rel="noopener">Источник изображения</a>
 
     <div class="hero-inner">
       <div class="hero-card glass">
         
-        <h1>At the Limits of Audience Engagement: When Does Interest in Netflix Series Begin to Decline</h1>
-        <div class="subtitle">The Impact of Increasing Episode Runtime and Season Scale on Global Audience Engagement: A Case Study of Stranger Things and The Umbrella Academy (2016–2026)</div>
+        <h1>На пределе вовлеченности: где заканчивается интерес зрителя Netflix</h1>
+        <div class="subtitle">Влияние роста хронометража и масштабов сезонов сериалов Netflix на интерес зрителей в мире на примере сериалов «Очень странные дела» и «Академия Амбрелла» в 2016–2026 годах</div>
 
       </div>
 
@@ -977,24 +979,21 @@
   </section>
 
   <div class="divider">
-    <p id="summary">Does the increasing runtime and expanding scale of Netflix series enhance audience engagement, or does it ultimately diminish viewers’ interest? Using Stranger Things and The Umbrella Academy as case studies, this research examines audience ratings, viewership data, and search activity between 2016 and 2026 to identify the factors that most effectively sustain audience engagement — whether extended viewing time, large-scale marketing campaigns, or the strength of the creators’ artistic vision.</p>
+    <p id="summary">Как влияет рост хронометража и масштаба сериалов Netflix на интерес зрителей — усиливает ли он вовлеченность или, наоборот, снижает ее? В этом исследовании на примере «Очень странных дел» и «Академии Амбрелла» анализируются рейтинги, просмотры и поисковая активность за 2016–2026 годы, чтобы понять, какие факторы действительно удерживают аудиторию — увеличение времени просмотра сериала, его маркетинговая кампания или сила авторского видения.</p>
   </div>
 
   <section class="section section-top" id="method">
     <div class="container grid-2 wide-cards">
       <article class="card glass">
-        <div class="kicker">Why Does It Matter</div>
-        <p>The aim of this study is to examine how changes in the production format of Netflix series — specifically episode length, total season runtime, the number of episodes, and the expansion of the directing team — influence audience engagement. Audience engagement is assessed through three key indicators: audience ratings, viewership, and online search activity.</p>
-        <p>The study is based on the hypothesis that <b>increasing a season’s runtime and production scale does not necessarily lead to higher levels of audience engagement</b> and may, under certain conditions, coincide with its decline.</p>
+        <div class="kicker">Зачем это изучать?</div>
+        <p>В рамках данного исследования наша <b>цель</b> — проанализировать, каким образом изменение формата сериалов Netflix — в частности, <b>длительность серий</b>, <b>общий хронометраж сезонов</b>, <b>количество эпизодов</b> и <b>расширение режиссерской команды</b> — влияет на <b>интерес</b> аудитории. Под интересом понимаются такие показатели, как <b>рейтинги</b>, <b>просмотры</b> и <b>поисковая активность</b>. Особое внимание уделяется выявлению устойчивых закономерностей (если таковые существуют) в восприятии зрителями многосезонных проектов платформы.</p>
+        <p>Исследование исходит из <b>гипотезы</b> о том, что увеличение хронометража и масштабов сезона <b>не гарантирует</b> рост интереса аудитории. Напротив, расширение экранного времени и вовлечение большего числа режиссеров может формировать <b>завышенные ожидания</b>, которые не всегда оправдываются. Это способно приводить к снижению вовлеченности зрителей, что отражается в динамике рейтингов и поисковой активности после выхода сериала.</p>
       </article>
 
       <article class="card glass">
-        <div class="kicker">Previous Research</div>
-        <p>The study <a href="https://www.mdpi.com/2076-0760/8/1/19?utm_source=chatgpt.com">An Experimental Examination of Binge Watching and Narrative Engagement</a> (2019), examines the relationship between binge watching and audience engagement. Using an experimental design, the authors demonstrate that watching multiple episodes consecutively strengthens viewers’ emotional engagement, narrative transportation, and parasocial relationships with fictional characters. At the same time, the study suggests that these effects do not necessarily translate into sustained long-term engagement, highlighting the distinction between immediate emotional involvement and enduring audience interest.</p>
-        <p>A <a href="https://link.springer.com/article/10.1007/s11129-024-09283-2?utm_source=chatgpt.com">study published in Quantitative Marketing and Economics</a> (2024) demonstrates that the relationship between watching intensity and audience engagement is non-linear. These findings reveal an inverse U-shaped pattern, with moderate levels of viewing intensity generating the highest levels of engagement, whereas excessive viewing may reduce audience interest and engagement.
-</p>
-<p>While previous research has examined binge-watching and viewing intensity, less attention has been paid to whether changes in the scale and runtime of individual streaming series affect audience engagement across multiple seasons. This study addresses this question by combining episode-level data with a comparative analysis of two long-running Netflix series.</p>
-
+        <div class="kicker">Исследования</div>
+        <p><a href="https://www.mdpi.com/2076-0760/8/1/19?utm_source=chatgpt.com">Исследование</a> Сары Э. Эриксон, Сони Даль Син и Ханны Бил в журнале «Social sciences» (2019) анализирует <b>влияние непрерывного просмотра</b> на вовлеченность аудитории: эксперимент показал, что просмотр нескольких эпизодов подряд <b>усиливает эмоциональную вовлеченность</b> и связь с персонажами, однако этот эффект не обязательно сохраняется в долгосрочной перспективе.</p>
+        <p>В работе из журнала <a href="https://link.springer.com/article/10.1007/s11129-024-09283-2?utm_source=chatgpt.com">Quantitative Marketing and Economics</a> (2024) Мина Амери и Элизабет Хонка описали, что интенсивность просмотра, включая длительность серии и количество эпизодов, влияет на вовлеченность аудитории по нелинейному принципу: <b>максимальный эффект достигается при умеренной длительности</b>, а чрезмерное увеличение времени просмотра может снижать интерес.</p>
       </article>
     </div>
   </section>
@@ -1002,32 +1001,32 @@
   <section class="section">
     <div class="container grid-2">
       <article class="card glass">
-        <div class="kicker">Research Methodology</div>
-        <p>This study employs a comprehensive analytical approach to examine the relationship between the production characteristics of television series and audience engagement. The analysis focuses on Stranger Things and The Umbrella Academy, selected as comparable case studies due to their shared genre, distribution platform, and multi-season narrative structure</p>
-        <h3>Data were collected from multiple sources:</h3>
+        <div class="kicker">Как работали с данными</div>
+        <p>В исследовании использовался комплексный анализ, направленный на выявление зависимости между характеристиками сериалов и интересом аудитории. Объектом анализа стали сериалы Очень странные дела и Академия Амбрелла, выбранные как сопоставимые по жанру, платформе (Netflix) и формату многосезонного нарратива.</p>
+        <h3>Сбор данных включал несколько источников:</h3>
         <ul class="bullet-list">
-          <li>Google Trends data were used to assess changes in audience interest over time through online search activity;</li>
-          <li>User ratings and vote counts were collected from IMDb and comparable review platforms;</li>
-          <li>Content characteristics (episode runtime, number of episodes, season structure, composition of the directing team).</li>
+          <li>поисковая активность (Google Trends) для оценки динамики интереса аудитории во времени;</li>
+          <li>пользовательские оценки и количество голосов (IMDb и аналогичные платформы);</li>
+          <li>характеристики контента (длительность эпизодов, количество серий, структура сезонов, состав режиссерской команды).</li>
         </ul>
-        <h3>The collected data were cleaned and aggregated:</h3>
+        <h3>На этапе подготовки данные были очищены и агрегированы:</h3>
         <ul class="bullet-list">
-          <li>Average ratings were calculated for both individual episodes and entire seasons;</li>
-          <li>Audience engagement indicators (e.g., Google Trends indices) were normalized to ensure comparability across data sources;</li>
-          <li>Standardized metrics were constructed, including average episode runtime, average number of user votes, and other comparable measures.</li>
+          <li>рассчитаны средние значения оценок по сезонам и сериям;</li>
+          <li>нормализованы показатели интереса (например, шкала Google Trends);</li>
+          <li>сформированы сопоставимые метрики (средний хронометраж, среднее число голосов и другие).</li>
         </ul>
-        <h3>The following analytical methods and tools were employed:</h3>
+        <h3>Для анализа использовались следующие методы и инструменты:</h3>
         <ul class="bullet-list">
-          <li>Descriptive statistics were used to identify overall trends in the data;</li>
-          <li>Pearson correlation analysis was conducted to examine the relationship between episode runtime and audience ratings;</li>
-          <li>Comparative case study analysis was used to identify both recurring and divergent patterns across the two series.</li>
+          <li>описательная статистика (среднее, медиана, минимум/максимум) для выявления общей динамики;</li>
+          <li>корреляционный анализ (коэффициент Пирсона) для проверки связи между хронометражем и оценками;</li>
+          <li>сравнительный анализ двух кейсов для выявления устойчивых и различающихся паттернов.</li>
         </ul>
-        <p>This framework was used to examine relationships between production scale and audience engagement while considering contextual factors such as marketing, final-season status, and broader media events.</p>
+        <p>Такой подход позволил оценить, существует ли <b>статистически значимая связь</b> между масштабом сезонов и интересом аудитории, а также выявить влияние дополнительных факторов — например, финальности сезона, маркетинговых кампаний и внешнего контекста.</p>
       </article>
 
       <article class="card glass">
-        <div class="kicker">Context</div>
-        <p>By the time their final seasons were released, both Stranger Things and The Umbrella Academy were established Netflix series, with both reaching the platform’s <a href="https://www.netflix.com/tudum/top10/tv">Top 10</a> during their first week of release.</p>
+        <div class="kicker">Контекст</div>
+        <p>В момент выхода своих последних сезонов «Очень странные дела» и «Академия Амбрелла» имели бешеную популярность, учитывая, что уже в первую неделю релиза они занимали лидирующие позиции в <a href="https://www.netflix.com/tudum/top10/tv">топ-10 Netflix</a>. Раз последние сезоны встречали с большим ажиотажем, значит предыдущие оставляли <b>приятное послевкусие</b> и заставляли ждать следующего сезона.</p>
       </article>
     </div>
   </section>
@@ -1039,29 +1038,29 @@
       <div class="visual-stack">
         <div class="placeholder tall glass" style="display: flex; flex-direction: column;">
             <div class="chart-header">
-                <h2 class="chart-title">Search Popularity of Stranger Things <span class="chart-accent">Stranger Things</span> 2016–2026</h2>
-                <p class="chart-subtitle">Google Trends search interest index (%) for the query <span class="chart-accent">Stranger Things</span>, where 100% represents the peak search interest during <br>during the 2016–2026 period.</p>
+                <h2 class="chart-title">Поисковая популярность <span class="chart-accent">Stranger Things</span> 2016–2026</h2>
+                <p class="chart-subtitle">Индекс поисковой активности в % по запросу <span class="chart-accent">Stranger Things</span>, где 100% — пиковый интерес, <br>за период 2016–2026 гг.</p>
             </div>
             <div class="chart-container">
-                <div class="chart-y-label">Search Interest Index (%)</div>
+                <div class="chart-y-label">Индекс поисковой активности, %</div>
                 <canvas id="osdChart"></canvas>
-                <div class="chart-x-label">Year</div>
+                <div class="chart-x-label">Годы</div>
             </div>
             <div class="chart-footer">
                 <span class="chart-source">
-                Data source: 
+                Источник данных: 
                     <a href="https://trends.google.com/trends/explore?date=2016-01-01%202026-01-13&q=Stranger%20Things" target="_blank">
                         Google Trends</a>, 2016–2026
                 </span>
-                <span class="chart-authors">Olga Kulishenko, Moscow 2026</span>
+                <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
             </div>
         </div>
         <div class="osd-spacer" aria-hidden="true"></div>
       </div>
 
       <article class="card glass">
-        <div class="kicker">Stranger things</div>
-        <p>During the first half of 2016, public interest in Stranger Things remained at its lowest recorded level, <b>reaching just 1 point on the Google Trends index</b>. This is unsurprising, given that the series premiered on July 15, 2016, and had originally been announced in April 2015 under its working title, Montauk, <a href="https://variety.com/2015/tv/news/stranger-things-netflix-1201489634/" target="_blank">as reported by Variety</a>.</p>    
+        <div class="kicker">Очень странные дела</div>
+        <p>В первой половине 2016 года интерес к проекту находился на минимальной отметке — <b>всего 1 балл</b>. Это не удивительно, ведь сериал вышел 15 июля 2016 года, а анонсирован был в апреле 2015, <a href="https://variety.com/2015/tv/news/stranger-things-netflix-1201489634/" target="_blank">как сообщает Variety</a>, под своим первоначальным рабочим названием — <b>«Монток»</b>. Большой популярности, как можно заметить, ему это не принесло. До выхода самой первой серии ОСД не был интересен зрителям и не особо рекламировался, учитывая, что изначально был рассчитан всего <b>лишь на один сезон</b>.</p>    
       </article>
     </div>
   </section>
@@ -1069,62 +1068,80 @@
   <section class="section">
     <div class="container grid-2">
       <article class="card glass">
-        <p>Search interest reached its highest level in January 2026, nearly a decade after the series premiered. This indicates that Stranger Things was able to generate renewed audience attention across multiple release cycles rather than concentrating interest around its initial launch.</p>
-        <p>The mean search interest index is approximately 9.45, compared with a median of 5, indicating a positively skewed distribution. Audience attention was therefore concentrated around major release periods, with sharp peaks surrounding new seasons followed by longer periods of lower but persistent interest.</p>
-        <p>However, the peak observed in 2026 shouldn’t be interpreted as an absolute positive record driven solely by the series’ quality or high levels of fan appreciation, as such indicators are not measured within this dataset. It is important to consider that audience interest may also have been influenced by external factors, including the COVID-19 pandemic, which accelerated the growth of streaming consumption in 2020–2021, as well as broader social trends and media discussions surrounding cast members. For example, in August 2022, one month after the release of the fourth season, one of the main cast members of Stranger Things, Millie Bobby Brown, gave an interview with <a href="https://www.allure.com/story/millie-bobby-brown-cover-interview-september-2022" target="_blank">Allure</a> in which she spoke about alleged harassment she had experienced from a former boyfriend. The interview received significant media attention, which may have contributed to increased public interest in the series during this period.
-</p>
+        <p>Тем не менее сериал не просто выжил, он <b>достиг пика интереса в январе 2026 года</b>. Десятилетний путь от премьеры до максимума говорит о многом: проект не только сохранил, 
+          но и <b>нарастил аудиторию</b>; франшиза успешно расширилась. Важно, что максимальный уровень интереса был достигнут <b>не сразу после релиза</b>, а спустя годы и сезоны, что отличает 
+          ОСД от кратковременных хитов и подчеркивает его роль <b>как культурного маркера поколения</b>.</p>
+        <p>При этом, как видно на графике, статистика выявляет <b>заметную асимметрию</b> в распределении интереса за эти 10 лет: <b>среднее </b>значение составляет около <b>9,45</b>, тогда как 
+          <b>медиана</b> всех значений равна всего <b>5</b>. Такое расхождение указывает на <b>цикличность внимания аудитории</b>: редкие, но мощные всплески интереса — например, перед премьерами 
+          сезонов и во время выхода новых серий, как и происходило в 2016, 2017, 2019, 2022 и 2025 годах — чередуются с длительными периодами умеренного внимания. Когда ажиотаж от 
+          премьер заканчивается, всеобщий интерес к проекту утихает. Распределение имеет <b>правостороннюю скошенность</b>: небольшое число пиковых значений «перевешивает» массу низких. 
+          Эта динамика типична для контента, живущего <b>за счёт инфоповодов</b> — релизов, скандалов, анонсов, — но сохраняющего лояльность аудитории и в «спокойные» периоды благодаря 
+          <b>устойчивому образу и культурной ценности</b>.</p>
+        <p>Однако пик в 2026 году <b>не отражает абсолютный положительный рекорд</b>, связанный только с качеством и высокой оценкой среди фанатов, в этих данных такой статистики в принципе нет. 
+          Стоит учитывать, что на динамику могли повлиять и <b>внешние факторы</b>: <b>пандемия</b>, ускорившая рост стримингового потребления в 2020–2021 годах, или <b>социальные тренды</b>, например, 
+          скандалы в соцсетях в связи с личными заявлениями актеров. Так, в августе 2022 года, через месяц после выхода 3 сезона, одна из главных актрис состава ОСД Милли Бобби Браун 
+          дала скандальное интервью <a href="https://www.allure.com/story/millie-bobby-brown-cover-interview-september-2022" target="_blank">Allure</a>, в котором рассказала о 
+          домогательствах по отношению к ней со стороны ее бывшего молодого человека. Это вызвало бурную реакцию в СМИ, из-за чего, вполне вероятно, к сериалу <b>был повышенный спрос</b>.</p>
       </article>
       <div class="grid-2">
         <div class="card glass votes-card">
-          <h3>Number of Votes</h3>
+          <h3>Количество оценок сериала</h3>
           <div class="votes-grid">
             <div class="vote-item vote-min">
-              <div class="vote-label">Minimum</div>
+              <div class="vote-label">Минимум</div>
               <div class="vote-value count-up">38 273</div>
-              <div class="vote-desc">Season 3, Episode 5<br>“Chapter Five: The Flayed”</div>
+              <div class="vote-desc">3 сезон, 5 серия<br>«Глава пятая: Армия Истязателя»</div>
             </div>
 
             <div class="vote-item vote-max">
-              <div class="vote-label">Maximum</div>
+              <div class="vote-label">Максимум</div>
               <div class="vote-value count-up">182 353</div>
-              <div class="vote-desc">Season 5, Episode 7<br>“Chapter Seven: The Bridge”</div>
+              <div class="vote-desc">5 сезон, 7 серия<br>«Глава седьмая: Мост»</div>
             </div>
           </div>
         </div>
       <article class="card glass">
-        <div class="kicker">Episode Ratings: What Happened</div>
-      <p>The fifth season was widely perceived as <a href="https://www.kinopoisk.ru/media/news/4011509/?utm_referrer=yandex.ru">the culmination</a> of a decade-long narrative. Over the course of those ten years, Stranger Things evolved from a nostalgic science-fiction series into a global cultural phenomenon. Final episodes of long-running series often become media events in their own right: viewers who disengaged during earlier seasons may return, social media discussion intensifies, search activity increases, and media outlets publish analyses, recaps, and theories. As a result, audiences do more than simply watch an episode — they actively register their engagement through ratings, votes, and online discussion.</p>
-      <p>Following the release of the penultimate episode of the final season, rumors began circulating online about allegedly deleted scenes. In an attempt to draw the attention of the series’ directors and writers, fans launched <a href="https://www.change.org/p/the-unseen-footage-stranger-things-s5-vol-2?recruiter=1398273776&recruited_by_id=2b31a9d0-e371-11f0-9ea0-f164ec676ffc&utm_source=share_petition&utm_campaign=psf_combo_share_initial&utm_term=1d788e4a266045389b66bba3b357c71f&utm_medium=copylink&utm_content=cl_sharecopy_490941774_en-US%3A3">a petition</a> calling for the unreleased footage to be made public. The controversy was also accompanied by coordinated attempts to lower the episode’s rating through negative voting.</p>
-      <p>Positioned midway through the third season, the episode with the fewest user votes appeared at a point when the initial excitement had already subsided, while the narrative tension leading into the finale had yet to reach its peak.</p>
+        <div class="kicker">Оценки серий: что это было?</div>
+      <p>Исходя из представленных данных, самой <b>«оцененной»</b> серией стала 7 серия 5 сезона — <b>182 353 голоса</b>. Это почти <b>в пять раз больше</b>, чем у серии с минимальным показателем. Такой результат трудно объяснить
+         исключительно качеством конкретного эпизода, скорее, речь идет об <b>эффекте финального события</b>.</p>
+      <p>Пятый сезон воспринимался как <a href="https://www.kinopoisk.ru/media/news/4011509/?utm_referrer=yandex.ru">кульминация</a> десятилетней истории. За это время сериал превратился из ностальгического sci-fi
+         проекта в <b>глобальный культурный феномен</b>. Финальные эпизоды подобных шоу часто становятся <b>медиасобытием</b>: возвращаются зрители, которые «отвалились» по ходу сезонов, усиливается обсуждение в 
+         социальных сетях, <b>возрастает поисковая активность</b>, СМИ публикуют разборы и теории. В результате аудитория не просто смотрит серию — она активно <b>фиксирует свое присутствие</b> через оценки и 
+         комментарии.</p>
+      <p>Также после выхода предпоследней серии финального сезона в интернете появился <b>слух о вырезанных сценах</b>. Фанаты, пытаясь привлечь внимание режиссеров и сценаристов, создали
+         <a href="https://www.change.org/p/the-unseen-footage-stranger-things-s5-vol-2?recruiter=1398273776&recruited_by_id=2b31a9d0-e371-11f0-9ea0-f164ec676ffc&utm_source=share_petition&utm_campaign=psf_combo_share_initial&utm_term=1d788e4a266045389b66bba3b357c71f&utm_medium=copylink&utm_content=cl_sharecopy_490941774_en-US%3A3">петицию</a>, 
+         а также искусственно голосовали за серию, занижая оценки.</p>
+      <p>Самой <b>менее оцененной</b> серией стала 5 серия 3 сезона «Глава пятая: Армия Истязателя» — <b>38 273 голосов</b>. Это середина третьего сезона — период, когда эффект новизны уже прошел, 
+        но <b>финальное напряжение еще не достигнуто</b>. Подобные «серединные» эпизоды часто <b>не вызывают резонансной реакции</b>: они развивают сюжет, но не становятся поворотными точками.</p>
       </article>
       </div>
         <div class="card glass votes-card">
-          <h3>Number of Votes per Episode, by Season</h3>
+          <h3>Количество голосов по сезонам</h3>
 
           <div class="votes-grid seasons-grid">
             <div class="vote-item">
-              <div class="vote-label">Season 1</div>
-              <div class="vote-value count-up">46 806</div>
+              <div class="vote-label">1 сезон</div>
+              <div class="vote-value count-up">46 806 человек</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Season 2</div>
-              <div class="vote-value count-up">43 089</div>
+              <div class="vote-label">2 сезон</div>
+              <div class="vote-value count-up">43 089 человек</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Season 3</div>
-              <div class="vote-value count-up">41 805</div>
+              <div class="vote-label">3 сезон</div>
+              <div class="vote-value count-up">41 805 человек</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Season 4</div>
-              <div class="vote-value count-up">50 565</div>
+              <div class="vote-label">4 сезон</div>
+              <div class="vote-value count-up">50 565 человек</div>
             </div>
 
             <div class="vote-item vote-max">
-              <div class="vote-label">Season 5</div>
-              <div class="vote-value count-up">107 549</div>
+              <div class="vote-label">5 сезон</div>
+              <div class="vote-value count-up">107 549 человек</div>
             </div>
           </div>
         </div>
@@ -1138,12 +1155,12 @@
         <div class="two-visuals">
           <div class="placeholder glass large">
             <div class="placeholder-label">
-              <img src="images/image1.PNG" class="zoomable">
+              <img src="images/image1.jpg" class="zoomable">
             </div>
           </div>
           <div class="placeholder glass large">
             <div class="placeholder-label">
-              <img src="images/image7.PNG" class="zoomable">
+              <img src="images/image7.jpg" class="zoomable">
             </div>
           </div>
         </div>
@@ -1151,20 +1168,21 @@
           <img id="lightbox-img">
         </div>
         <div class="card glass image-caption-block">
-          <p>Stranger Things brand collaborations with Pandora and Starbucks</p>
+          <p>Коллаборации ОСД с Starbucks и Pandora</p>
           <p class="muted">
-            Sources:
-            <a href="https://www.instagram.com/snackolator?igsh=NXhkYjc2MDluN3Rl" target="_blank">Snackolator</a>   
-            and
-            <a href="https://www.instagram.com/p/DRewENmjPxJ/?igsh=cDNreHRuZ2wxcmly" target="_blank">Pandora</a>
-            on instagram
+            Источник:
+            <a href="https://www.instagram.com/snackolator?igsh=NXhkYjc2MDluN3Rl" target="_blank">Инстаграм-аккаунт** Snackolator</a>   
+            и
+            <a href="https://www.instagram.com/p/DRewENmjPxJ/?igsh=cDNreHRuZ2wxcmly" target="_blank">Инстаграм-аккаунт** Pandora</a>
           </p>
         </div>
 
       </div>
 
       <article class="card glass">
-          <p>The change in the number of votes across seasons reveals a notable pattern. Audience engagement gradually declined from the first to the third season — a trajectory often observed in long-running series, as the initial novelty gives way to more stable but less intensive attention. The fourth season shows a renewed increase in engagement, while the fifth marks a dramatic surge, coinciding with the conclusion of the story and an extensive promotional campaign that included international <a href="https://www.newsbytesapp.com/news/entertainment/stranger-things-5-netflix-announces-world-press-tour/story">press tours</a> and collaborations with a wide range of brands.</p>
+          <p>Интересно проследить динамику среднего количества голосов по сезонам. Видно постепенное снижение интереса с первого по третий сезон — <b>типичная траектория для многосезонных проектов</b>, когда пик новизны 
+            сменяется стабильным, но менее интенсивным вниманием. Четвертый сезон демонстрирует восстановление интереса, а пятый — резкий скачок, связанный с <b>финалом истории</b>, подогретым многочисленными рекламными 
+            кампаниями, <a href="https://www.newsbytesapp.com/news/entertainment/stranger-things-5-netflix-announces-world-press-tour/story">пресс-турами по странам</a> и коллаборациями с различными брендами</a>.</p>
       </article>
 
     </div>
@@ -1172,67 +1190,93 @@
    <section class="section">
     <div class="container grid-2">
       <div class="card glass votes-card">
-          <h3>Episode Ratings</h3>
+          <h3>Рейтинговая оценка серий</h3>
 
-          <div class="votes-grid">
-            <div class="vote-item vote-min">
-              <div class="vote-label">Lowest rating</div>
+          <div class="votes-grid rate-grid">
+            <div class="vote-item">
+              <div class="vote-label">МИНИМУМ</div>
               <div class="vote-value">
                 <span class="count-up">5,7</span>/10
               </div>
-              <div class="text">Season 5, Episode 7 — “Chapter Seven: The Bridge”</div>
+              <div class="text">5 сезон, 7 серия, «Глава седьмая: Мост»</div>
             </div>
 
-            <div class="vote-item vote-max">
-              <div class="vote-label">Highest rating</div>
+            <div class="vote-item">
+              <div class="vote-label">МАКСИМУМ</div>
               <div class="vote-value">
                 <span class="count-up">9,6</span>/10
               </div>
-              <div class="text">Season 4, Episode 7 — “Chapter Seven: The Massacre at Hawkins Lab”</div>
+              <div class="text">4 сезон, 7 серия, «Глава седьмая: Резня в Хоукинской лаборатории»</div>
             </div>
 
+            <div class="vote-item">
+              <div class="vote-label">СРЕДНЯЯ</div>
+              <div class="vote-value">
+                <span class="count-up">8,4</span>/10
+              </div>
+            </div>
           </div>
-          <p></p>
-           <p><b>The lowest rating</b> was received by the previously discussed episode “Chapter Seven: The Bridge.” First, the low score may reflect unmet audience expectations: previous seasons had set a high benchmark, the series was approaching its conclusion, yet some viewers perceived the narrative as progressing too slowly. Second, both media outlets and fans <a href="https://www.forbes.com/sites/paultassi/2025/12/27/stranger-things-season-5s-rotten-tomatoes-imdb-scores-are-crashing/">criticized</a> the episode for devoting excessive attention to characters who had played relatively minor roles elsewhere in the series, as well as for the performances of Millie Bobby Brown and Finn Wolfhard as Eleven and Mike. Third, a substantial portion of the episode is devoted to a scene in which Will Byers (Noah Schnapp) comes out as gay to his friends. The scene became a particularly contentious point in the episode’s reception. Some viewers <a href="https://nordic.ign.com/stranger-things/102416/news/stranger-things-season-5-episode-7-sparks-review-bomb-battle-as-fans-combat-backlash-to-hotly-debate">accused Netflix</a> of promoting a “gay agenda” to younger audiences and criticized the Duffer Brothers for, in their view, prioritizing politics over storytelling.</p>
-          <p><b>The highest rating</b> was received by Season 4, Episode 7.  For the first time in the series, the fourth season was not released in its entirety on a single day, but divided into two volumes. Episode 7 therefore served as the conclusion to the first volume, <a href="https://www.tvinsider.com/gallery/stranger-things-best-episodes-ranked/#9">generating anticipation</a> for the final two episodes. The episode also reveals the identity of the season’s main antagonist through a major plot twist, which may have further contributed to its strong audience reception.</p>
+          <p>     </p>
+           <p>Итак, <b>минимальное значение (5,7)</b> получил ранее упомянутый эпизод «Глава седьмая: Мост» 5 сезона. Во-первых, такую оценку можно связать с <b>неоправданными ожиданиями зрителей</b>: планка, поставленная 
+            предыдущими сезонами, слишком высока, близок конец всего сериала, а события развиваются слишком медленно. Во-вторых, СМИ и фанаты 
+            <a href="https://www.forbes.com/sites/paultassi/2025/12/27/stranger-things-season-5s-rotten-tomatoes-imdb-scores-are-crashing/">критиковали</a> эпизод за <b>чрезмерное внимание к персонажам</b>, которые почти 
+            не появлялись в остальных частях сериала, <b>плохую игру</b> Милли Бобби Браун и Финна Вулфхарда, играющих Одиннадцать и Майка. В-третьих, весомую часть хронометража занимает сцена в которой 
+            Уилл Байерс (Ноа Шнапп) признается друзьям в своей гомосексуальности*. 
+            Зрители <a href="https://nordic.ign.com/stranger-things/102416/news/stranger-things-season-5-episode-7-sparks-review-bomb-battle-as-fans-combat-backlash-to-hotly-debate">обвинили</a> 
+            Netflix в <b>«продвижении гей-повестки*»</b> среди молодого поколения, а братьев Даффер упрекнули в том, что они поставили политику выше сюжета.</p>
+        <p><b>Максимальный рейтинг (9,6)</b> получил 7 эпизод 4 сезона «Глава седьмая: Резня в Хоукинской лаборатории». Впервые в 4 сезоне серии вышли не в один день, а были разделены
+           на две волны: серии 1–7 и серии 8–9, соответственно <b>7 серия</b> стала концовкой 1 части сезона и <a href="https://www.tvinsider.com/gallery/stranger-things-best-episodes-ranked/#9">подогрела интерес</a> 
+           к финальным частям. В эпизоде также раскрывается <b>лицо главного злодея</b> через масштабный плот-твист, что также могло удивить зрителей.</p>
+        <p>При этом средний рейтинг по первым четырем сезонам <b>(8,4)</b> указывает на то, что сериал в целом получил <b>положительные отзывы</b> от зрителей. Однако средняя оценка для 5 сезона снизилась 
+          <b>(7,9)</b>: это может указывать на то, что сериал не смог оправдать ожидания зрителей, особенно по сравнению с предыдущими сезонами.</p>
+      
       </div> 
     </div>
   </section>
   <section class="section">
     <div class="container grid-2">
           <div class="card glass votes-card">
-          <h3>Episode Runtime</h3>
+          <h3>Хронометраж</h3>
 
           <div class="votes-grid rate-grid">
             <div class="vote-item">
-              <div class="vote-label">Shortest episode</div>
+              <div class="vote-label">МИНИМУМ</div>
               <div class="vote-value">
-                <span class="count-up">41</span> min
+                <span class="count-up">41</span> минута
               </div>
-              <div class="text">Season 1, Episode 7 — “Chapter Seven: The Bathtub”</div>
+              <div class="text">1 сезон, 7 серия, «Глава седьмая: Ванна»</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Longest episode</div>
+              <div class="vote-label">МАКСИМУМ</div>
               <div class="vote-value">
-                <span class="count-up">139</span> min
+                <span class="count-up">139</span> минут
               </div>
-              <div class="text">Season 4, Episode 9 — “Chapter Nine: The Piggyback”</div>
+              <div class="text">4 сезон, 7 серия, «Глава седьмая: Резня в Хоукинской лаборатории»</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Average episode runtime</div>
+              <div class="vote-label">СРЕДНЯЯ</div>
               <div class="vote-value">
-                ~ <span class="count-up">63</span> min
+                <span class="count-up">63</span> минуты
               </div>
             </div>
             
           </div>
-          <p></p>
-          <p>An analysis of the series’ runtime shows that Season 1 had the shortest average episode runtime, at approximately <b>49 minutes</b>. This is characteristic of many first seasons, when a series has yet to expand in scale and develop more complex narrative structures. At the same time, Season 1 received one of the highest average audience ratings, at <b>8.7</b>, suggesting that relatively compact episodes were compatible with strong audience reception.</p>
-          <p>Episode runtimes increased across subsequent seasons, with the most substantial shift occurring in <b>Season 4</b>, when the average episode length reached approximately <b>84 minutes</b>. Despite this considerable increase, <b>Season 4</b> maintained a high average audience rating of <b>8.6</b>. This suggests that longer runtimes don’t necessarily lead to lower audience engagement, provided the content continues to meet viewers’ expectations.</p>
-          <p><b>Season 5</b>, however, had an average episode runtime of approximately <b>77 minutes</b> and saw a substantial decline in its average rating to <b>7.9</b>. This suggests that longer runtimes, when not supported by sufficiently substantial content and tightly structured storytelling, may make episodes feel unnecessarily drawn out. The decline may also reflect issues with pacing and narrative development, which could have contributed to audience disappointment, particularly given the heightened expectations surrounding the conclusion of the series.</p>
-          <p>The Pearson correlation coefficient between episode runtime and average rating is <b>0.097</b>. It indicates an extremely weak positive correlation — effectively, little to no linear relationship between the two variables. An episode with a runtime of approximately 50 minutes has an expected average rating of around 8.3, while even at 120 minutes, the predicted rating remains within roughly the same range, at <b>8.3–8.4</b>. On the rating scale used by streaming audiences, this difference is practically negligible.</p>
+          <p>    </p>
+          <p>Проанализировав общий хрон сериала посезонно, мы выявили, что <b>первый сезон</b> имеет самый короткий средний хронометраж — ~ <b>49 минут</b>, это характерно для большинства первых сезонов сериалов, 
+            когда проект еще не разросся в масштабах и сложных сюжетных линиях. Именно в этом сезоне средняя оценка пользователей была одной из самых высоких — <b>8,7</b>, что подтверждает <b>высокое качество контента 
+            при относительно компактных сериях</b>.</p>
+        <p>С увеличением хронометража в последующих сезонах, особенно начиная с <b>четвертого сезона</b>, продолжительность серий выросла до ~ <b>84 минут</b>, и это значительное увеличение явно повлияло на 
+          <b>восприятие зрителями</b>. Несмотря на увеличение времени, <b>четвертый сезон (средний рейтинг 8,678)</b> все еще сохранял высокие оценки, что указывает на то, что увеличение хронометража <b>не всегда</b> приводит к 
+          снижению интереса, если контент продолжает соответствовать ожиданиям аудитории.</p>
+        <p>Однако 5 сезон со средней продолжительностью серий ~ <b>77 минут</b> и значительным падением рейтинга до <b>7,91</b> предполагает, что увеличение хронометража без должного содержания и плотного сюжета
+           может привести к <b>растянутому восприятию</b>. Это также может быть результатом недостаточной работы с темпом и повествовательными линиями, что вызывало разочарование у зрителей, так как от финала всего сериала 
+           могли ожидать большего</p>
+        <p>По этим данным мы рассчитали <b>коэффициент корреляции</b> между длительностью серии и ее средней оценкой. Полученное значение <b>0,097</b> указывает на <b>очень слабую положительную корреляцию</b>, даже ее отсутствие. 
+          Если взять длину серии в <b>50 минут</b>, то ее средняя оценка составляет примерно <b>8,3</b>. При этом у серии в 120 минут значение также не превышает <b>8,3–8,4</b>. В рамках оценивания серий на стриминговых сервисах 
+          разница <b>абсолютно незаметна.</b>   </p>
+      
       </div>
     
   </section>
@@ -1243,23 +1287,23 @@
   <div class="container">
     <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
       <div class="chart-header">
-        <h1 class="chart-title">Relationship Between Episode Rating and Runtime</h2>
-        <p class="chart-subtitle">Pearson correlation between <span class="chart-accent">Stranger Things </span>runtime (in minutes) and average episode rating</p>
+        <h1 class="chart-title">Зависимость оценки серии от ее длительности</h2>
+        <p class="chart-subtitle">Расчет коэффициента корреляции Пирсона между длительностью серии <span class="chart-accent">Stranger Things </span>в минутах и ее средней оценкой</p>
       </div>
 
       <div class="chart-container" style="flex: 1; position: relative;">
-        <div class="chart-y-label">Average Episode Rating</div>
+        <div class="chart-y-label">Средняя оценка серии</div>
           <canvas id="osdRuntimeRatingChart"></canvas>
-        <div class="chart-x-label"> Runtime (min)</div>
+        <div class="chart-x-label">Длительность, мин</div>
       </div>
 
       <div class="chart-footer">
         <span class="chart-source">
-          Data source: 
+          Источник: 
           <a href="https://github.com/Kree1l/strangethingsdataset" target="_blank" rel="noopener">
             GitHub</a>, 2016–2026
         </span>
-        <span class="chart-authors">Olga Kulishenko, Moscow 2026</span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
       </div>
     </div>
   </div>
@@ -1267,11 +1311,16 @@
   <section class="section">
     <div class="container grid-2">
       <article class="card glass">
-        <div class="kicker">What About the Directors</div>
-        <p>First, <b>Andrew Stanton</b> has the highest average rating, although he directed only two episodes. With such a small sample, however, the result cannot be considered statistically robust, as a single highly rated episode can substantially raise the overall average.</p>
-        <p>Second, the work of the <b>Duffer Brothers</b> provides the most informative case: they directed 23 episodes, with an average rating of <b>8.61</b>. Given the substantially larger number of observations, this figure can be considered the most representative of the dataset. It suggests that the series’ core creative team maintained a consistently high level of audience reception across multiple seasons.</p>
-        <p>Interestingly, <b>Shawn Levy</b>, who directed nine episodes, suggested that his directorial approach was closely aligned with the series’ established style and creative vision.</p>
-        <p>One anomaly is particularly worth noting: the episode co-directed <b>by the Duffer Brothers and Shawn Levy received a rating of 5.7</b> — the previously discussed Episode 7 from Season 5. Since this represents only a single episode, it cannot be considered representative of the directors’ overall work. However, it demonstrates that even within an otherwise consistent creative framework, individual episodes can perform poorly.</p>
+        <div class="kicker">А что до режиссеров?</div>
+        <p>Если рассматривать <b>режиссерский фактор</b> как потенциальный драйвер интереса аудитории, можно заметить несколько закономерностей.</p>
+        <p>Во-первых, <b>наивысший средний рейтинг — 8,95 — у Эндрю Стэнтона</b>, однако он снял всего 2 серии. При таком небольшом объеме данных результат нельзя считать статистически устойчивым: одна удачная серия 
+          способна существенно поднять среднее значение.</p>
+        <p>Во-вторых, <b>наиболее показательна работа братьев Дафферов</b> — они сняли 23 серии, и их средний рейтинг составляет <b>8,61</b>. Это большой массив наблюдений, поэтому именно этот показатель можно считать наиболее 
+          репрезентативным. Он подтверждает, что авторское ядро проекта обеспечивает стабильное качество.</p>
+        <p>Интересно, что Шон Леви, снявший 9 серий, демонстрирует сопоставимый результат — 8,62, что говорит о близости режиссерского подхода к общей стилистике сериала.</p>
+        <p>Отдельно стоит отметить аномалию: серия, снятая <b>совместно братьями Дафферами и Шоном Леви, имеет рейтинг 5,7</b> (та самая, ранее упомянутая 7 серия 5 сезона). Поскольку это всего одна серия, она не отражает 
+          общий уровень работы режиссеров, но показывает, что даже <b>внутри устойчивой авторской модели возможны провалы</b> — вероятно, связанные не столько с режиссурой, сколько с сюжетными решениями.</p>
+        <p>В контексте нашей гипотезы можно сделать важный вывод: в случае «Очень странных дел» устойчивость интереса аудитории во многом обеспечивается наличием сильного <b>авторского центра — братьев Дафферов</b>.</p>
       </article>
 
   </section>
@@ -1279,24 +1328,24 @@
   <div class="container">
     <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
       <div class="chart-header">
-        <h2 class="chart-title">Average Episode Ratings <span class="chart-accent">by Director</span></h2>
-        <p class="chart-subtitle">Average ratings of<span class="chart-accent"> Stranger Things</span> episodes grouped by director</p>
-        <p class="chart-charttype" style="font-size: 14px; text-align: left;">Sorted in Descending Order</p>
+        <h2 class="chart-title">Средняя оценка эпизодов <span class="chart-accent">режиссеров</span></h2>
+        <p class="chart-subtitle">Расчет средней оценки эпизодов сериала, относящихся к конкретным режиссерам<span class="chart-accent"> Stranger Things</span></p>
+        <p class="chart-charttype" style="font-size: 14px; text-align: left;">Расположение по убыванию</p>
       </div>
 
       <div class="chart-container" style="flex: 1; position: relative;">
-        <div class="chart-y-label">Average Episode Rating</div>
+        <div class="chart-y-label">Средняя оценка эпизодов</div>
           <canvas id="osdDirectorRatingChart"></canvas>
-        <div class="chart-x-label">Director</div>
+        <div class="chart-x-label">Режиссеры</div>
       </div>
 
       <div class="chart-footer">
         <span class="chart-source">
-          Data source: 
+          Источник: 
           <a href="https://github.com/Kree1l/strangethingsdataset" target="_blank" rel="noopener">
             GitHub</a>, 2016–2026
         </span>
-        <span class="chart-authors">Olga Kulishenko, Moscow 2026</span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
       </div>
     </div>
   </div>
@@ -1304,7 +1353,8 @@
   <section class="section">
     <div class="container grid-2">
       <article class="card glass">
-        <p>The results suggest an association between creative continuity and consistently strong audience reception. Episodes directed by the Duffer Brothers maintained a high average rating across a substantially larger sample than those of other directors, although the data do not establish a causal relationship between directorial continuity and audience engagement.</p>
+        <p>В отличие от проектов с более фрагментированной режиссерской структурой, здесь наблюдается: стилистическая целостность, единая драматургическая логика, стабильный высокий средний рейтинг.</p>
+        <p>Таким образом, можно предположить, что расширение команды само по себе не гарантирует роста интереса, а сохранение авторского контроля, напротив, способствует его удержанию.</p>
       </article>
 
   </section>
@@ -1320,32 +1370,34 @@
   <div class="container full-layout">
 
     <article class="card glass">
-      <div class="kicker">The Umbrella Academy</div>
-      <p>Interest in The Umbrella Academy remained at its lowest level from January 2016 through December 2018, even though plans to develop a series based on the comic books had been reported as early as July 2015, according to <a href="https://www.usatoday.com/story/life/tv/2015/07/07/universal-cable-dark-horse-entertainment-set-first-look-deal/29813237/" target="_blank" rel="noopener">USA Today</a>. The series itself premiered on February 15, 2019. This prolonged period of limited public attention reflects a common industry pattern: considerable time often passes between the initial announcement and the release of a finished series, while pre-release marketing activity may remain relatively limited.
-</p>
+      <div class="kicker">Академия Амбрелла</div>
+      <p>Минимальный интерес к сериалу Академия Амбрелла был в период с января 2016 по декабрь 2018 года, хотя о начале разработки <b>сериала по мотивам комиксов</b>, 
+        по информации <a href="https://www.usatoday.com/story/life/tv/2015/07/07/universal-cable-dark-horse-entertainment-set-first-look-deal/29813237/" target="_blank" rel="noopener">USA Today</a>, стало 
+        известно еще в июле 2015 года, а сам релиз состоялся 15 февраля 2019 года. Длительный «молчаливый» период объясняется типичной для индустрии ситуацией: между анонсом и выходом готового продукта проходит 
+        немало времени, а <b>предрелизная маркетинговая активность зачастую ограничена</b>. В результате аудитория практически не вовлечена до момента появления первых серий.</p>
       
     </article>
 
     <div class="visual-stack">
       <div class="placeholder tall glass" style="display: flex; flex-direction: column; height: 800px;">
         <div class="chart-header">
-          <h2 class="chart-title">Search Popularity of <span class="chart-accent">The Umbrella Academy</span> 2016–2026</h2>
-          <p class="chart-subtitle">Google Trends search interest index (%) for the query <span class="chart-accent">The Umbrella Academy</span>, where 100 represents the peak search interest during the 2016–2026 period.</p>
+          <h2 class="chart-title">Поисковая популярность <span class="chart-accent">The Umbrella Academy</span> 2016–2026</h2>
+          <p class="chart-subtitle">Индекс поисковой активности в % по запросу <span class="chart-accent">The Umbrella Academy</span>, где 100% — пиковый интерес, за период 2016–2026 гг.</p>
         </div>
 
         <div class="chart-container" style="flex: 1; position: relative;">
-          <div class="chart-y-label">Search Interest Index (%)</div>
+          <div class="chart-y-label">Индекс поисковой активности, %</div>
           <canvas id="umbrellaChart"></canvas>
-          <div class="chart-x-label">Year</div>
+          <div class="chart-x-label">Годы</div>
         </div>
 
         <div class="chart-footer">
           <span class="chart-source">
-            Data source:
+            Источник данных:
             <a href="https://trends.google.com/trends/explore?date=2016-01-01%202026-01-13&q=Umbrella%20Academy" target="_blank" rel="noopener">Google Trends</a>, 2016–2026
           </span>
           <span class="umbrella-mark" aria-hidden="true" style="font-size: 35px;">☂</span>
-          <span class="chart-authors">Olga Kulishenko, Moscow 2026</span>
+          <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
         </div>
       </div>
 
@@ -1365,29 +1417,37 @@
   <section class="section">
     <div class="container grid-2">
       <article class="card glass">
-        <p>Interest surged dramatically in August 2020, and several factors may help explain this spike. First, the second season was released on July 31, 2020, and went on to become particularly popular among fans. As <a href="https://www.businessinsider.com/umbrella-academy-season-2-biggest-netflix-hit-since-the-witcher-2020-9">Business Insider</a> reported, the series even surpassed The Witcher in popularity during this period, indicating a strong audience response. Second, the broader context of 2020 cannot be overlooked: the COVID-19 pandemic and the resulting lockdowns substantially increased demand for streaming services. As <a href="https://www.usatoday.com/story/life/tv/2015/07/07/universal-cable-dark-horse-entertainment-set-first-look-deal/29813237/">Vulture</a> noted, streaming platforms experienced exceptionally high levels of consumption during the summer of 2020, creating favorable conditions for increased viewership and online discussion. The August 2020 peak can therefore be understood as the result of at least two overlapping factors: the strong reception of the second season and the external circumstances that accelerated streaming consumption.</p>
-        <p>The data reveal a pronounced asymmetry in the distribution of audience interest: the mean search interest index is approximately <b>7.8</b>, while the median is <b>only 3</b>. This suggests the series spent most of its lifespan attracting relatively limited attention, punctuated by rare but intense spikes in interest. Such a pattern is typical of series whose popularity is concentrated around particular events. In this case, one season clearly broke through, while subsequent seasons failed to generate comparable levels of audience interest. During quieter periods, the series retained a degree of audience loyalty but generated relatively little active engagement. The Umbrella Academy effectively surged during the pandemic but failed to sustain that momentum beyond it, as suggested by the progressively weaker peaks surrounding the releases of Seasons 3 and 4.</p>
+        <p><b>Резкий взлет интереса</b> произошел в августе 2020 года, на что есть четкие причины. Во‑первых, 31 июля 2020 года вышел второй сезон, ставший <b>культовым для фанатов</b>. 
+          <a href="https://www.businessinsider.com/umbrella-academy-season-2-biggest-netflix-hit-since-the-witcher-2020-9">Как сообщает Business Insider</a>, в тот период сериал обогнал по популярности 
+          даже «Ведьмака», что свидетельствует о сильном зрительском отклике. Во‑вторых, нельзя игнорировать контекст 2020 года: <b>пандемия COVID‑19</b> и связанный с ней карантин резко увеличили аудиторию стриминговых 
+          сервисов. Как отмечало издание <a href="https://www.usatoday.com/story/life/tv/2015/07/07/universal-cable-dark-horse-entertainment-set-first-look-deal/29813237/">Vulture</a>, летом 2020 года платформы 
+          находились на пике востребованности, что создало благоприятные условия для роста просмотров и обсуждений. Таким образом, высокий интерес в августе 2020 года стал результатом <b>сочетания как минимум двух 
+          факторов</b>: качественного контента (второй сезон) и внешних обстоятельств (рост стримингового потребления).</p>
+        <p>Статистика выявляет <b>выраженную асимметрию</b> в распределении интереса: среднее значение индекса заинтересованности составляет около <b>7,88</b>, тогда как медиана равна всего <b>3</b>. Это говорит о том, 
+          что большую часть времени проект находился <b>в зоне низкого внимания</b>, а пики интереса были редкими и интенсивными. Такая динамика <b>типична для сериалов</b>, чья популярность концентрируется вокруг ключевых 
+          событий — как, например в этом случае, один сезон «стрельнул», а остальные не вызвали такого интереса аудитории. В «простых» периодах аудитория <b>сохраняет лояльность</b>, но не проявляет активной 
+          вовлеченности, что и отражается в низком медианном значении. <b>Академия Амбрелла «вспыхнула» во время пандемии, но не «пережила» её</b>, судя по падению спроса в моменты выходов 3 и 4 сезонов.</p>
       </article>
       <div class="grid-2">
         <div class="card glass votes-card">
-          <h3>Number of Votes</h3>
+          <h3>Количество оценок сериала</h3>
           <div class="votes-grid">
             <div class="vote-item vote-min">
-              <div class="vote-label">Minimum</div>
+              <div class="vote-label">Минимум</div>
               <div class="vote-value count-up">2656</div>
-              <div class="vote-desc">Season 4, Episode 4<br>“The Purge”</div>
+              <div class="vote-desc">4 сезон, 4 серия<br>«Очищение»</div>
             </div>
 
             <div class="vote-item vote-max">
-              <div class="vote-label">Maximum</div>
+              <div class="vote-label">Максимум</div>
               <div class="vote-value count-up">7641</div>
-              <div class="vote-desc">Season 1, Episode 1<br>“We Only See Each Other at Weddings and Funerals”</div>
+              <div class="vote-desc">1 сезон, 1 серия<br>«Мы видимся только на свадьбах и похоронах»</div>
             </div>
           </div>
         </div>
       <article class="card glass">
-        <div class="kicker">Episode Ratings: What Happened</div>
-        <p><b>The episode with the highest number of votes</b> was the pilot episode. In 2019, The Umbrella Academy was a new Netflix release that attracted significant attention through a variety of creative promotional campaigns and outdoor advertising initiatives surrounding its launch. For example, Netflix installed a giant umbrella featuring the series’ logo on Merewether Beach in Newcastle, Australia. <a href="https://www.pedestrian.tv/entertainment/netflix-newcastle-umbrella-academy/" target="_blank" rel="noopener">According to Pedestrian</a>, the structure measured more than 12 meters in width, 6 meters in height, and had a 14-meter-long handle.</p>
+        <div class="kicker">Оценки серий: что это было?</div>
+        <p><b>Самой оцененной</b> серией стала пилотная, в 2019 году «Академия Амбрелла» была новым проектом Netflix, который привлек к себе достаточно много внимания из-за <b>обилия креативных спецпроектов и наружной рекламы</b>, приуроченных к запуску. Например, Netflix заказал и установил на пляже Меруэзер в Ньюкасле (Австралия) гигантский зонт с логотипом сериала. По данным <a href="https://www.pedestrian.tv/entertainment/netflix-newcastle-umbrella-academy/" target="_blank" rel="noopener">Pedestrian</a>, его ширина составляет более 12 метров, высота — шесть метров, а ручка — 14 метров. </p>
       </article>
       <div class="full-image-block">
         <div class="image-wrapper">
@@ -1396,47 +1456,45 @@
 
       <div class="image-meta">
         <div class="image-caption" style="font-size: 22px;">
-          Promotional Giant Umbrella for The Umbrella Academy
+          Гигантский зонт с логотипом сериала
         </div>
 
           <div class="image-source">
-            Source:
+            Источник:
             <a href="http://PEDESTRIAN.TV">PEDESTRIAN.TV</a>
           </div>
         </div>
       </div>
       <article class="card glass">
-        <p>Such promotional content can quickly become viral, attracting additional attention to the series and its creators. As a result, viewers are more likely to engage with the project and share their opinions about it online.
-        </p>
-        <p>The episode with the fewest votes was Season 4, Episode 4. One possible explanation is that audience interest in the series had declined over time, with the fourth season receiving a particularly negative reception. This is reflected in both a <a href="https://www.cbr.com/reasons-fans-didnt-like-umbrella-academy-season-4/">CBR article</a> discussing the reasons behind fans’ disappointment with the final season and its <a href="https://www.rottentomatoes.com/tv/the_umbrella_academy#seasons">Rotten Tomatoes</a> score, where Season 4 received only 58% from critics (first season received 77%, second and third seasons scored 91%).
-        </p>
+        <p>Такой контент достаточно быстро становится <b>виральным</b>, привлекает внимание к сериалу и его создателям. Люди смотрят проект и скорее хотят поделиться своим мнением о нем. </p>
+        <p><b>Самой менее оцененной серией</b> стала 4 серия 4 сезона. Одна из очевидных причин — людям «приелся» сериал, а четвертый сезон и вовсе <b>разочаровал</b>. Об этом говорит <a href="https://www.cbr.com/reasons-fans-didnt-like-umbrella-academy-season-4/">статья CBR</a>, а также рейтинг на <a href="https://www.rottentomatoes.com/tv/the_umbrella_academy#seasons">Rotten Tomatoes</a> (58% от критиков), для сравнения, первый сезон получил оценку <b>77%</b>, второй — <b>91%</b>, третий — <b>91%</b>.</p>
       </article>
       </div>
         <div class="card glass votes-card">
-          <h3>Number of Votes per Episode, by Season</h3>
+          <h3>Количество голосов по сезонам</h3>
 
           <div class="votes-grid seasons-umb-grid">
             <div class="vote-item">
-              <div class="vote-label">Season 1</div>
-              <div class="vote-value count-up">6056</div>
+              <div class="vote-label">1 сезон</div>
+              <div class="vote-value count-up">6056 человек</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Season 2</div>
-              <div class="vote-value count-up">4907</div>
+              <div class="vote-label">2 сезон</div>
+              <div class="vote-value count-up">4907 человек</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Season 3</div>
-              <div class="vote-value count-up">3568</div>
+              <div class="vote-label">3 сезон</div>
+              <div class="vote-value count-up">3568 человек</div>
             </div>
 
             <div class="vote-item vote-max">
-              <div class="vote-label">Season 4</div>
-              <div class="vote-value count-up">3257</div>
+              <div class="vote-label">4 сезон</div>
+              <div class="vote-value count-up">3257 человек</div>
             </div>
           </div>
-          <p>It is also important to examine the trend in the average number of votes across seasons. The first season maintained an average of approximately <b>6,000 votes per episode</b>, whereas the fourth season dropped to just <b>over 3,000</b> This decline reflects a gradual loss of audience interest over the course of the series.</p>
+          <p>Здесь тоже стоит проследить динамику среднего количества голосов по сезонам. Первый сезон держал отметку в примерно <b>6 тысяч</b> оценок, тогда как четвертый — чуть больше <b>3 тысяч</b>, что связано с потерей интереса. </p>
 
         </div>
 
@@ -1448,26 +1506,34 @@
 <section class="section">
     <div class="container grid-2">
       <div class="card glass votes-card">
-          <h3>Episode Ratings</h3>
-          <div class="votes-grid">
+          <h3>Рейтинговая оценка серий</h3>
+
+          <div class="votes-grid rate-grid">
             <div class="vote-item">
-              <div class="vote-label">Lowest rating</div>
+              <div class="vote-label">МИНИМУМ</div>
               <div class="vote-value">
                 <span class="count-up">4,9</span>/10
               </div>
-              <div class="text">Season 4, Episode 6 — “The End of the Beginning”</div>
+              <div class="text">4 сезон, 6 серия, «Конец начала»</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Highest rating</div>
+              <div class="vote-label">МАКСИМУМ</div>
               <div class="vote-value">
                 <span class="count-up">8,0</span>/10
               </div>
-              <div class="text">Season 2, Episode 10 — “The End of Something”»</div>
+              <div class="text">2 сезон, 10 серия, «Этап пройден»</div>
+            </div>
+
+            <div class="vote-item">
+              <div class="vote-label">СРЕДНЯЯ</div>
+              <div class="vote-value">
+                <span class="count-up">7,7</span>/10
+              </div>
             </div>
           </div>
 
-        <p>The episode with the <b>lowest rating belongs</b> to the final season of the series, which may be connected to the unmet expectations of viewers, as discussed earlier. In contrast, the <b>highest-rated episode</b> comes from Season 2 of The Umbrella Academy, which can be explained by its unexpected narrative twist generated significant discussion among fans on social media. In the episode, the members of the Academy attempt to return to 2019, only to discover that it is not their original home and that the Umbrella Academy has been replaced by the Sparrow Academy.</p>
+        <p>Серия <b>с самой низкой оценкой</b> относится к финальному сезону сериала, что связано с неоправдавшимися ожиданиями зрителей, о чем было сказано выше. Серия же <b>с самой высокой оценкой</b> относится ко второму сезону АА, что оправдано <b>необычным сюжетным поворотом</b>, который запустил большое обсуждение среди фанатов в социальных сетях: члены Академии собираются вернуться в 2019 год, но оказывается, что это не их дом и живет там не Академия Амбрелла, а Академия Спарроу. При этом, средняя оценка всего сезона <b>7,7/10</b> говорит о том, что сериал достаточно качественный и интересный. </p>
       </div> 
     </div>
   </section>
@@ -1475,34 +1541,34 @@
 <section class="section">
     <div class="container grid-2">
           <div class="card glass votes-card">
-          <h3>Episode Runtime</h3>
+          <h3>Хронометраж</h3>
 
           <div class="votes-grid rate-grid">
             <div class="vote-item">
-              <div class="vote-label">Shortest episode</div>
+              <div class="vote-label">МИНИМУМ</div>
               <div class="vote-value">
-                <span class="count-up">39</span> min
+                <span class="count-up">39</span> минут
               </div>
-              <div class="text">Season 3, Episode 9 — “Seven Bells”</div>
+              <div class="text">3 сезон, 9 серия, «Семь колоколов»</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Longest episode</div>
+              <div class="vote-label">МАКСИМУМ</div>
               <div class="vote-value">
-                <span class="count-up">69</span> min
+                <span class="count-up">69</span> минут
               </div>
-              <div class="text">Season 4, Episode 6 — “The End of the Beginning”</div>
+              <div class="text">4 сезон, 6 серия, «Конец начала»</div>
             </div>
 
             <div class="vote-item">
-              <div class="vote-label">Average episode runtime</div>
+              <div class="vote-label">СРЕДНЯЯ</div>
               <div class="vote-value">
-                ~ <span class="count-up">50</span> min
+                <span class="count-up">50</span> минут
               </div>
             </div>
             
           </div>
-          <p>There are no studies, articles, or datasets that provide information on the average runtime of Netflix series (the only related source available is <a href="https://www.whats-on-netflix.com/news/how-long-would-it-take-to-watch-all-of-netflix/">Casey Moore’s article</a> analyzing the total runtime of all Netflix episodes). Therefore, it is difficult to draw a definitive conclusion about whether the series aligns with broader Netflix runtime trends. However, when compared with the previously analyzed Stranger Things, The Umbrella Academy appears to follow the conventions of Netflix’s hour-long series format.</p>
+          <p>К сожалению, нет ни одного исследования, статьи или датасета, которые бы предоставили информацию о среднем хронометраже сериалов Netflix (единственный похожий материал — <a href="https://www.whats-on-netflix.com/news/how-long-would-it-take-to-watch-all-of-netflix/">статья Кейси Мура</a> о длительности всех серий). Поэтому, сделать четкий вывод о том, насколько этот сериал попал в тренд Netflix по хронометражу — сложно. Однако в сравнении с предыдущим проанализированным сериалом ОСД можно сделать вывод о том, что Академия Амбрелла <b>соответствует канонам часовых серий</b> стримингового сервиса.</p>
       </div>
     
   </section>
@@ -1511,26 +1577,26 @@
   <div class="container">
     <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
       <div class="chart-header">
-        <h1 class="chart-title"><span class="chart-accent">Longer </span> Episodes  — <span class="chart-accent">Lower </span> Ratings</h1>
-        <p class="chart-subtitle">Pearson correlation between <span class="chart-accent">The Umbrella Academy</span>  episode runtime (in minutes) and average episode rating</p>
+        <h1 class="chart-title"><span class="chart-accent">Дольше</span> серия — <span class="chart-accent">ниже</span> рейтинг</h1>
+        <p class="chart-subtitle">Расчет коэффициента корреляции Пирсона между средней оценкой серии <span class="chart-accent">The Umbrella Academy</span> и ее продолжительностью в минутах</p>
         
       </div>
 
 
       <div class="chart-container" style="flex: 1; position: relative;">
-        <div class="chart-y-label">Average Episode Rating</div>
+        <div class="chart-y-label">Средняя оценка</div>
         <canvas id="umbrellaRuntimeRatingChart"></canvas>
-        <div class="chart-x-label">Runtime (min)</div>
+        <div class="chart-x-label">Продолжительность, мин</div>
       </div>
 
       <div class="chart-footer">
         <span class="chart-source">
-          Data source:
+          Источник:
           <a href="https://www.ratingraph.com/tv-shows/the-umbrella-academy-ratings-33824/" target="_blank" rel="noopener">
             Rating Graph</a>, 2019–2024
         </span>
         <span class="umbrella-mark" aria-hidden="true" style="font-size: 35px;">☂</span>
-        <span class="chart-authors">Olga Kulishenko, Moscow 2026</span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
       </div>
     </div>
   </div>
@@ -1539,8 +1605,8 @@
 <section class="section">
   <div class="container grid-2">
     <article class="card glass">
-      <p>Furthermore, these results provide additional support for the research hypothesis. Season 2 had <b> the shortest average runtime at 47 minutes</b> and received <b> the highest average audience rating</b>. In contrast, <b>the longest season</b> — and arguably the most resource-intensive in terms of production — Season 4, with an average runtime of 56 minutes, received <b> the lowest rating</b>. The data don’t indicate that viewers inherently dislike longer episodes; rather, the additional runtime appears not to have been filled with content capable of enhancing the overall quality of the series.</p>
-      <p>Here the Pearson correlation coefficient between episode runtime and average rating is <b>−0.567</b>. It indicates a moderate negative linear relationship: in most cases, as episode runtime increases, ratings tend to decrease rather than increase.</p>
+      <p>Кроме того, уже с этими результатами можно <b>подтвердить гипотезу нашего исследования</b>. Второй сезон по среднему хронометражу <b>является самым коротким — 47 минут</b> — и при этом имеет <b>самую высокую оценку</b> среди пользователей (<b>8,3</b>), тогда как самый длинный и, казалось бы, самый затратный по, например, съемочному времени четвертый сезон — <b>56 минут</b> — оценили хуже всего (<b>6,3</b>). Данные не говорят, что зрителям не нравятся длинные серии, скорее, дополнительное время не было заполнено контентом, который бы повысил качество проекта. <b>Увеличение масштаба могло привести к растянутости сюжета</b>, замедлению темпа, излишним сюжетным линиям — что вызвало разочарование и падение рейтингов. </p>
+      <p>По этим данным, был рассчитан коэффициент корреляции между длительностью серии и ее средней оценкой. Полученное значение <b>-0,567</b> говорит об <b>умеренной отрицательной линейной зависимости</b>: в большинстве случаев с увеличением длительности серии ее рейтинг снижается, а не наоборот. </p>
     </article>
   </div>
 </section>
@@ -1549,25 +1615,25 @@
   <div class="container">
     <div class="placeholder tall glass probability-block" style="display: flex; flex-direction: column; height: 880px;">
       <div class="chart-header">
-        <h2 class="chart-title">Average Episode Ratings by <span class="chart-accent">Director</span></h2>
-        <p class="chart-subtitle">Average ratings of <span class="chart-accent">The Umbrella Academy</span> episodes grouped by director</p>
-        <p class="chart-charttype" style="font-size: 14px; text-align: left;">Sorted in Descending Order</p>
+        <h2 class="chart-title">Средняя оценка эпизодов <span class="chart-accent">конкретных</span> режиссеров</h2>
+        <p class="chart-subtitle">Расчет средней оценки эпизодов сериала, относящихся к конкретным режиссерам <span class="chart-accent">The Umbrella Academy</span></p>
+        <p class="chart-charttype" style="font-size: 14px; text-align: left;">Расположение по убыванию</p>
       </div>
 
       <div class="chart-container" style="flex: 1; position: relative;">
-        <div class="chart-y-label">Average Episode Rating</div>
+        <div class="chart-y-label">Средняя оценка эпизодов</div>
         <canvas id="umbrellaDirectorRatingChart"></canvas>
-        <div class="chart-x-label">Director</div>
+        <div class="chart-x-label">Фамилии режиссеров</div>
       </div>
 
       <div class="chart-footer">
         <span class="chart-source">
-          Source:
+          Источник:
           <a href="https://www.ratingraph.com/tv-shows/the-umbrella-academy-ratings-33824/" target="_blank" rel="noopener">
             Rating Graph</a>, 2019–2024
         </span>
         <span class="umbrella-mark" aria-hidden="true" style="font-size: 35px;">☂</span>
-        <span class="chart-authors">Olga Kulishenko, Moscow 2026</span>
+        <span class="chart-authors">Коротких Анастасия, Кулишенко Ольга, Якимова Анастасия, Москва 2026</span>
       </div>
     </div>
   </div>
@@ -1576,54 +1642,106 @@
 <section class="section">
   <div class="container grid-2">
     <article class="card glass">
-      <p>First, the series was directed by <b>12 different directors</b>, each of whom worked <b>on between one and six episodes</b>, pointing to a relatively fragmented creative structure. Since Pearson’s correlation coefficient could not be meaningfully applied to this type of data, the average ratings of the episodes directed by each individual director were calculated instead.
-      </p>
-      <p>Second, the episodes directed by <b>Peter Hoar, Ellen Kuras, and Amanda Marsalis</b> received some of the highest ratings, suggesting that individual directorial vision may have influenced how audiences responded to particular episodes.
-      </p>
+      <p>Если рассматривать режиссерский фактор как возможный драйвер интереса аудитории, можно отметить несколько наблюдений на примере «Академии Амбрелла».
+</p>
+      <p>Во-первых, над сериалом <b>работали 12 режиссеров</b>, каждый из которых снял <b>от 1 до 6 серий</b>, что указывает на фрагментированную авторскую структуру. В связи с невозможностью применить коэффициент корреляции Пирсона были рассчитаны средние оценки серий, снятых каждым режиссером.</p>
+      <p>Во-вторых, наиболее высокие рейтинги показали серии <b>Питера Хора, Эллен Курас и Аманды Марсалис</b>, что позволяет предположить влияние индивидуального режиссерского видения на восприятие эпизодов.
+</p>
     </article>
   </div>
 </section>
+
+<section class="section">
+  <div class="container">
+    <div class="quote-profile-block glass">
+      <div class="quote-text">
+        «Огромный охват стриминговой платформы, такой как Netflix, влияет на то, что становится частью культурной памяти и что забывается, формируя массовую культуру таким образом, как традиционные медиа никогда не делали».
+      </div>
+
+      <div class="quote-profile-content">
+        <div class="quote-profile-photo">
+          <img src="images/speaker.png" alt="Фото спикера" class="zoomable">
+        </div>
+
+        <div class="quote-profile-meta">
+          <div class="quote-meta-group">
+            <div class="quote-meta-text"><span class="chart-accent"><b>Рампаццо Гамбарато Ренира</b></span></div>
+          </div>
+
+          <div class="quote-meta-group">
+            <div class="quote-meta-text">
+              Профессор медиа и коммуникационных исследований в Школе образования и коммуникации Университета Йёнчёпинга, Швеция. В прошлом — <a href="https://ju.se/en/personinfo?id=3433"> доцент ВШЭ</a> Департамента медиа факультета коммуникации, медиа и дизайна.
+            </div>
+          </div>
+
+          <div class="quote-meta-text">
+            <a href="https://journals.sagepub.com/doi/full/10.1177/13675494221128332" target="_blank" rel="noopener">Источник цитаты</a>
+            <br>
+            <a href="https://ju.se/en/personinfo?id=3433" target="_blank" rel="noopener">Источник фото спикера</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section class="section" id="conclusions">
   <div class="container">
     <div class="card glass" style="padding:40px;">
-      <div class="kicker">Conclusions</div>
-      <h2 style="margin-bottom:18px;">The findings support the research hypothesis</h2>
-      <p>Increasing episode runtimes and expanding season scale do not necessarily increase audience engagement and may sometimes have the opposite effect.</p>
+      <div class="kicker">Выводы</div>
+      <h2 style="margin-bottom:18px;">Гипотеза исследования подтвердилась</h2>
+      <p>Увеличение хронометража и масштабов сезонов само по себе не гарантирует роста интереса аудитории и в ряде случаев, наоборот, приводит к обратному эффекту.</p>
     </div>
 
     <div class="grid-2" style="margin-top:18px;">
       <div class="card glass" style="padding:32px;">
-        <h3>Scale without quality leads to disappointment</h3>
-        <p> In Stranger Things, the correlation between episode runtime and average rating is effectively zero, while The Umbrella Academy shows a moderate negative relationship. This suggests that longer episodes can reduce engagement when they result in slower pacing or an overstretched narrative. <b> External factors also influence audience engagement</b>. Both series experienced major peaks during the pandemic, when lockdowns increased demand for streaming content.</p>
+        <h3>Хронометраж сам по себе не работает</h3>
+        <p>В случае с сериалом «Очень странные дела» коэффициент корреляции Пирсона между средней оценкой серии и ее хронометражем <b>фактически равен нулю</b>. Это означает, что увеличение длительности эпизода само по себе не влияет на интерес аудитории.</p>
+        <p>У «Академии Амбрелла», напротив, между этими величинами наблюдается умеренная отрицательная линейная зависимость. Иными словами, <b>чем длиннее</b> становилась <b>серия</b>, тем выше была вероятность <b>более сдержанной зрительской оценки</b>.</p>
+        <p>Зрители готовы принимать большой хронометраж только тогда, когда он оправдан содержательно и поддерживается цельным авторским видением. <b>Масштаб без качества приводит к разочарованию</b>.</p>
       </div>
 
       <div class="card glass" style="padding:32px;">
-        <h3>External factors also influence audience engagement</h3>
-        <p>Both series experienced major peaks during the pandemic, when lockdowns increased demand for streaming content.</p>
+        <h3>Внешний контекст влияет не меньше самого сериала</h3>
+        <p>При анализе сериалов важно учитывать не только внутренние характеристики проекта, но и <b>внешний медиаконтекст</b>. Пиковые значения популярности обоих сериалов пришлись на 2020 год — период пандемии, когда интерес к стриминговым сервисам и их продуктам заметно вырос из-за карантинных ограничений.</p>
+        <p>Это показывает, что динамика зрительского внимания формируется не только за счет сценария, режиссуры или масштаба сезона, но и <b>под воздействием более широкой социальной и культурной среды</b>.</p>
       </div>
     </div>
 
     <div class="grid-2" style="margin-top:18px;">
       <div class="card glass" style="padding:32px;">
-        <h3>Marketing strategies can significantly increase audience attention</h3>
-        <p>Promotional campaigns and social media activity can generate additional interest and viewership.</p>
+        <h3>Маркетинг Netflix усиливает интерес</h3>
+        <p>Необходимо учитывать и <b>маркетинговые стратегии Netflix</b>, которые сервис реализует перед стартом сериала или нового сезона, а также в момент выхода новых серий. Платформа активно запускает <b>виральные спецпроекты и коллаборации с брендами</b> — например, в случае с Kinder Joy и героями «Очень странных дел».</p>
+        <p>Информация о таких кампаниях быстро расходится по социальным сетям, особенно в формате коротких видео, и получает отклик от аудитории в виде обсуждений, репостов и, конечно, просмотров.</p>
       </div>
 
       <div class="card glass" style="padding:32px;">
-        <h3>Final season is an event</h3>
-        <p>Final seasons and episodes can attract high levels of audience participation because of their event status and nostalgia, rather than solely because of their quality or directorial choices.</p>
+        <h3>Финал сезона — это эффект события</h3>
+        <p>Финальные сезоны и особенно заключительные серии могут собирать <b>рекордное количество просмотров</b> и голосов не только благодаря высокому качеству или уникальным режиссерским решениям.</p>
+        <p>Во многом здесь работает эффект события, эмоциональное ожидание развязки и <b>фактор ностальгии</b>. Зритель реагирует не просто на отдельный эпизод, а на завершение большой истории, за которой следил <b>несколько лет</b>.</p>
       </div>
     </div>
 
     <div class="card glass" style="padding:40px; margin-top:18px; border:1px solid rgba(229,23,29,.34); background:linear-gradient(180deg, rgba(229,23,29,.12), rgba(255,255,255,.03));">
-      <div class="kicker">Key Takeaway</div>
-      <p>One of the essential findings is the potential role of creative continuity in sustaining audience interest. Stranger Things, supported by the consistent creative leadership of the Duffers, maintained strong audience engagement over a decade. In contrast, The Umbrella Academy had a more fragmented directorial structure and experienced a decline in ratings and audience activity.
-      </p>
-      <p>Overall, the findings suggest that even with large budgets, extensive marketing, and technological advances, the strongest factor in sustaining audience interest remains unique creative ideas and a distinctive authorial vision.
-      </p>
+      <div class="kicker">Ключевой момент</div>
+      <h2 style="margin-bottom:18px;">Сила проекта — в авторском центре</h2>
+      <p>Одним из самых неожиданных открытий исследования стало то, что важнейшим фактором устойчивого интереса зрителей оказалась стабильность и сила режиссерской команды. Сохранение авторского центра в лице братьев Даффер позволило «Очень странным делам» оставаться на высоком уровне на протяжении десяти лет.</p>
+      <p>В случае «Академии Амбрелла» более фрагментированная режиссура, при которой внутри проекта сосуществовали разные подходы и интонации, вероятно, стала одной из причин постепенного угасания интереса, если сопоставлять статистику просмотров и оценок в начале и в конце сериала.</p>
+      <p>Вывод оказывается довольно простым, но принципиально важным: даже в эпоху больших данных, огромных бюджетов Netflix и все более автоматизированного производства контента главным конкурентным преимуществом по-прежнему остаются уникальная идея, креативность и сильное авторское видение.</p>
     </div>
   </div>
 </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card glass muted">
+       *«Международное общественное движение ЛГБТ» признано экстремистским и запрещено на территории РФ. <br>
+**Инстаграм входит в компанию Meta, признанную экстремистской и запрещенной на территории РФ.
+
+      </div>
+    </div>
+  </footer>
 
 <script>
 const osdLabels = [
@@ -1705,7 +1823,7 @@ new Chart(ctx, {
             return items[0].label;
           },
           label: function(context) {
-            return 'Index: ' + context.parsed.y;
+            return 'Индекс: ' + context.parsed.y;
           }
         }
       },
@@ -1716,7 +1834,7 @@ new Chart(ctx, {
             type: 'label',
             xValue: '2016-10',
             yValue: 15,
-            content: ['August–November 2016', 'Season 1 released'],
+            content: ['Август–ноябрь 2016', 'Вышел 1 сезон'],
             width: 120,
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
@@ -1735,7 +1853,7 @@ new Chart(ctx, {
             type: 'label',
             xValue: '2017-11',
             yValue: 41,
-            content: ['November 2017', 'Season 2 released'],
+            content: ['Ноябрь 2017', 'Вышел 2 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -1753,7 +1871,7 @@ new Chart(ctx, {
             type: 'label',
             xValue: '2019-07',
             yValue: 54,
-            content: ['July 2019', 'Season 3 released'],
+            content: ['Июль 2019', 'Вышел 3 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -1771,7 +1889,7 @@ new Chart(ctx, {
             type: 'label',
             xValue: '2022-06',
             yValue: 69,
-            content: ['June 2022', 'Season 4 released'],
+            content: ['Июнь 2022', 'Вышел 4 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -1789,7 +1907,7 @@ new Chart(ctx, {
             type: 'label',
             xValue: '2025-07',
             yValue: 79,
-            content: ['December 2025', 'Season 5 released'],
+            content: ['Декабрь 2025', 'Вышел 5 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -1852,7 +1970,7 @@ new Chart(ctx, {
 function animateCount(el, duration = 1200) {
   const text = el.textContent.trim();
 
-
+  // определяем число (с пробелами или запятыми)
   const number = parseFloat(text.replace(/\s/g, '').replace(',', '.'));
 
   if (isNaN(number)) return;
@@ -1885,6 +2003,7 @@ function animateCount(el, duration = 1200) {
   requestAnimationFrame(update);
 }
 
+// запуск при появлении на экране
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1912,7 +2031,7 @@ const runtimeRatingData = [
   { x: 50, y: 7.8 }, { x: 50, y: 7.9 }, { x: 49, y: 8.2 }, { x: 52, y: 8.9 },
   { x: 51, y: 8.5 }, { x: 59, y: 8.5 }, { x: 55, y: 8.7 }, { x: 77, y: 9.3 },
 
-  { x: 75, y: 8.1 }, { x: 62, y: 8.3 }, { x: 77, y: 9.5 },
+  { x: 75, y: 8.1 }, { x: 75, y: 8.1 }, { x: 62, y: 8.3 }, { x: 77, y: 9.5 },
   { x: 74, y: 8.1 }, { x: 73, y: 8.5 }, { x: 98, y: 9.6 }, { x: 84, y: 8.7 },
   { x: 139, y: 9.2 },
 
@@ -1920,6 +2039,8 @@ const runtimeRatingData = [
   { x: 68, y: 7.9 }, { x: 75, y: 8.0 }, { x: 66, y: 5.7 }, { x: 128, y: 7.6 }
 ];
 
+// Линия тренда по данным CSV:
+// y = 0.00367656 * x + 8.22263
 const trendline = [
   { x: 40,  y: 8.3697 },
   { x: 140, y: 8.7373 }
@@ -1930,6 +2051,7 @@ new Chart(runtimeRatingCtx, {
   data: {
     datasets: [
       {
+        label: 'Эпизоды Stranger Things',
         data: runtimeRatingData,
         backgroundColor: '#E5171D',
         borderColor: '#ffffff',
@@ -1946,6 +2068,7 @@ new Chart(runtimeRatingCtx, {
       },
       {
         type: 'line',
+        label: 'Линия тренда',
         data: trendline,
         borderColor: 'rgba(255,255,255,0.65)',
         borderWidth: 2,
@@ -1987,14 +2110,14 @@ new Chart(runtimeRatingCtx, {
         callbacks: {
           title: function(context) {
             const p = context[0].raw;
-            if (p.x === 50 && p.y === 8.3) return;
-            if (p.x === 120 && p.y === 8.35) return;
-            return;
+            if (p.x === 50 && p.y === 8.3) return 'Опорная точка';
+            if (p.x === 120 && p.y === 8.35) return 'Опорная точка';
+            return 'Эпизод Stranger Things';
           },
           label: function(context) {
             return [
-              'Runtime: ' + context.raw.x + ' min',
-              'Rating episode: ' + context.raw.y + '/10'
+              'Хронометраж: ' + context.raw.x + ' минут',
+              'Оценка: ' + context.raw.y + '/10'
             ];
           }
         }
@@ -2064,25 +2187,25 @@ new Chart(runtimeRatingCtx, {
 const directorRatingCtx = document.getElementById('osdDirectorRatingChart');
 
 const directorLabels = [
-  ['ANDREW STANTON'],
-  ['SHAWN LEVY'],
-  ['THE DUFFERS'],
-  ['UTA BRIESEWITZ'],
-  ['NIMRÓD ANTAL'],
-  ['FRANK DARABONT'],
-  ['REBECCA THOMAS'],
-  ['THE DUFFERS', ' SHAWN LEVY']  
+  ['Эндрю Стэнтон'],
+  ['Шон Леви'],
+  ['Мэт Даффер', ' Росс Даффер'],
+  ['Ута Бризевиц'],
+  ['Нимрод Антал'],
+  ['Фрэнк Дарабонт'],
+  ['Ребекка Томас'],
+  ['Мэт Даффер', ' Росс Даффер', ' Шон Леви']  
 ];
 
 const directorValues = [
-  8.95,
-  8.62,
-  8.61,
-  8.50,
-  8.30,
-  8.20,
+  8.95, // Andrew Stanton
+  8.62, // Shawn Levy
+  8.61, // Duffers
+  8.50,  // Uta Briesewitz
+  8.30, // Nimrod Antal
+  8.20, // Frank Darabont
   6.00,
-  5.70 
+  5.70 // Duffers + Levy
   
   
 ];
@@ -2162,7 +2285,7 @@ new Chart(directorRatingCtx, {
             return Array.isArray(label) ? label.join(' ') : label;
           },
           label: function(context) {
-            return 'Avarage rating: ' + context.parsed.y.toFixed(2) + '/10';
+            return 'Средняя оценка: ' + context.parsed.y.toFixed(2) + '/10';
           }
         }
       }
@@ -2286,7 +2409,7 @@ new Chart(umbrellaCtx, {
             return items[0].label;
           },
           label: function(context) {
-            return 'Index: ' + context.parsed.y;
+            return 'Индекс: ' + context.parsed.y;
           }
         }
       },
@@ -2297,7 +2420,7 @@ new Chart(umbrellaCtx, {
             type: 'label',
             xValue: '2019-02',
             yValue: 85,
-            content: ['February 2019', 'Season 1 released'],
+            content: ['Февраль 2019', 'Вышел 1 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -2315,7 +2438,7 @@ new Chart(umbrellaCtx, {
             type: 'label',
             xValue: '2021-05',
             yValue: 85,
-            content: ['August 2020', 'Season 2 released'],
+            content: ['Август 2020', 'Вышел 2 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -2332,7 +2455,7 @@ new Chart(umbrellaCtx, {
             type: 'label',
             xValue: '2022-06',
             yValue: 53,
-            content: ['June 2022', 'Season 3 released'],
+            content: ['Июнь 2022', 'Вышел 3 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -2350,7 +2473,7 @@ new Chart(umbrellaCtx, {
             type: 'label',
             xValue: '2024-08',
             yValue: 37,
-            content: ['August 2024', 'Season 4 released'],
+            content: ['Август 2024', 'Вышел 4 сезон'],
             color: '#ffffff',
             backgroundColor: 'rgba(0,0,0,0)',
             borderWidth: 0,
@@ -2429,6 +2552,7 @@ const umbrellaRuntimeRatingData = [
   { x: 58, y: 5.7 }, { x: 69, y: 4.9 }
 ];
 
+// Нисходящая трендовая линия для визуализации отрицательной зависимости
 const umbrellaTrendline = [
   { x: 39, y: 8.55 },
   { x: 69, y: 5.85 }
@@ -2439,6 +2563,7 @@ new Chart(umbrellaRuntimeCtx, {
   data: {
     datasets: [
       {
+        label: 'Эпизоды The Umbrella Academy',
         data: umbrellaRuntimeRatingData,
         backgroundColor: '#E5171D',
         borderColor: '#ffffff',
@@ -2451,6 +2576,7 @@ new Chart(umbrellaRuntimeCtx, {
       },
       {
         type: 'line',
+        label: 'Линия тренда',
         data: umbrellaTrendline,
         borderColor: 'rgba(255,255,255,0.72)',
         borderWidth: 2,
@@ -2489,10 +2615,13 @@ new Chart(umbrellaRuntimeCtx, {
         displayColors: false,
         padding: 10,
         callbacks: {
+          title: function() {
+            return 'Эпизод The Umbrella Academy';
+          },
           label: function(context) {
             return [
-              'Runtime: ' + context.raw.x + ' min',
-              'Rating: ' + context.raw.y + '/10'
+              'Хронометраж: ' + context.raw.x + ' минут',
+              'Оценка: ' + context.raw.y + '/10'
             ];
           }
         }
@@ -2558,33 +2687,33 @@ new Chart(umbrellaRuntimeCtx, {
 const umbrellaDirectorCtx = document.getElementById('umbrellaDirectorRatingChart');
 
 const umbrellaDirectorLabels = [
-  'AMANDA MARSALIS',
-  'PITER HOAR',
-  'ELLEN KURAS',
-  'STEPHEN SURJIK',
-  'TOM VERICA',
-  'JEREMY WEBB',
-  'ANDREW BERNSTEIN',
-  'SULVAIN WHITE',
-  'JEFF KING',
-  'SHERYL DUNYE',
-  'PACO CABEZAS',
-  'NEVILLE KIDD'
+  'Аманда Марсалис',
+  'Питер Хор',
+  'Эллен Курас',
+  'Стивен Сурджик',
+  'Том Верика',
+  'Джереми Уэбб',
+  'Эндрю Бернштейн',
+  'Сильвен Уайт',
+  'Джефф Кинг',
+  'Шерил Дунье',
+  'Пако Кабесас',
+  'Нелли Кидд'
 ];
 
 const umbrellaDirectorValues = [
-  8.60,
-  8.20, 
-  8.18,
-  8.15, 
-  8.05,
-  7.86, 
-  7.75, 
-  7.50, 
-  7.30, 
-  7.20, 
-  6.56,
-  5.70,
+  8.60, // Marsalis
+  8.20, // Hoar
+  8.18, // Kuras
+  8.15, // Surjik
+  8.05, // Verica
+  7.86, // Webb
+  7.75, // Bernstein
+  7.50,  // White
+  7.30, // King
+  7.20, // Dunye
+  6.56, // Cabezas
+  5.70, // Kidd
 ];
 
 const umbrellaValueLabelPlugin = {
@@ -2666,7 +2795,7 @@ new Chart(umbrellaDirectorCtx, {
             return items[0].label;
           },
           label: function(context) {
-            return 'Average Rating: ' + context.parsed.y.toFixed(2) + '/10';
+            return 'Средняя оценка: ' + context.parsed.y.toFixed(2) + '/10';
           }
         }
       }
